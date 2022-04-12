@@ -13,6 +13,7 @@ colors.dark = {
   orange = hsl {14, 88, 64.5},
   yellow = hsl {57, 100, 84},
   green  = hsl {102, 59, 88},
+  green2  = hsl {90, 80, 90},
   cyan   = hsl {224, 99, 84},
   blue   = hsl {265, 99, 69},
   brown  = hsl {22, 37, 59},
