@@ -8,7 +8,7 @@ local function set_groups(c)
     Cursor           = { fg=c.bg, bg=c.caret },
     CursorColumn     = { bg=c.line_highlight },
     CursorLine       = { bg=c.line_highlight },
-    CursorLineNr     = { fg=c.caret },
+    CursorLineNr     = { fg=c.fg, bg=c.line_highlight },
     Directory        = { fg=c.purple },
     DiffAdd          = { fg=c.green2, bg=utils.blend(c.green, c.bg, 0.25) },
     DiffDelete       = { fg=c.red, bg=utils.blend(c.red, c.bg, 0.1) },
@@ -16,15 +16,18 @@ local function set_groups(c)
     DiffText         = { fg=c.paleorange, bg=utils.blend(c.paleorange, c.bg, 0.2) },
     ErrorMsg         = { fg=c.bg, bg=c.red, attr="bold" },
     FoldColumn       = { fg=c.line_numbers, bg=c.bg },
-    Folded           = { fg=c.brown, bg=c.bg, attr="bold" },
+    Folded           = {
+      fg=c.brown, bg=utils.blend(c.brown, c.bg, 0.1), attr="bold"
+    },
     LineNr           = { fg=c.line_numbers },
     MatchParen       = { fg=c.red, bg=c.bg, attr="bold" },
-    ModeMsg          = { fg=c.green },
-    MoreMsg          = { fg=c.green },
+    ModeMsg          = { fg=c.purple, bg=c.inline_highlight },
+    MoreMsg          = { fg=c.purple, bg=c.inline_highlight },
     NonText          = { fg=c.comments },
+    Whitespace       = { fg=c.guides },
     Normal           = { fg=c.fg, bg=c.bg },
     Pmenu            = { fg=c.fg, bg=c.selection },
-    PmenuSel         = { fg=c.bg, bg=c.cyan },
+    PmenuSel         = { fg=c.bg, bg=c.pink },
     PmenuSbar        = { bg=c.selection },
     PmenuThumb       = { bg=c.comments },
     Question         = { fg=c.purple },
@@ -35,10 +38,10 @@ local function set_groups(c)
     SpellCap         = { fg=c.purple, attr="undercurl" },
     SpellBad         = { fg=c.red, attr="undercurl" },
     StatusLine       = { fg=c.gray, bg=c.selection },
-    StatusLineNC     = { fg=c.comments, bg=c.selection },
+    StatusLineNC     = { fg=c.comments, bg=c.selection2 },
     TabLine          = { fg=c.fg, bg=c.line_numbers },
     TabLineFill      = { fg=c.fg, bg=c.selection },
-    TabLineSel       = { fg=c.bg, bg=c.cyan },
+    TabLineSel       = { fg=c.bg, bg=c.palepink },
     Title            = { fg=c.green },
     VertSplit        = { fg=c.comments },
     Visual           = { fg=c.fg, bg=c.selection },
@@ -99,14 +102,36 @@ local function set_groups(c)
     DiagnosticWarn = { fg=c.paleyellow },
     DiagnosticInfo = { fg=c.gray },
     DiagnosticHint = { fg=c.paleorange },
-    DiagnosticVirtualTextError = { fg=c.red, bg=utils.blend(c.red, c.bg, 0.1) },
-    DiagnosticVirtualTextWarn = { fg=c.paleyellow, bg=utils.blend(c.paleyellow, c.bg, 0.1) },
-    DiagnosticVirtualTextInfo = { fg=c.gray, bg=utils.blend(c.gray, c.bg, 0.2) },
-    DiagnosticVirtualTextHint = { fg=c.paleorange, bg=utils.blend(c.paleorange, c.bg, 0.1) },
+
+    DiagnosticVirtualTextError = {
+      fg=c.red, bg=utils.blend(c.red, c.bg, 0.1)
+    },
+    DiagnosticVirtualTextWarn = {
+      fg=c.paleyellow, bg=utils.blend(c.paleyellow, c.bg, 0.1)
+    },
+    DiagnosticVirtualTextInfo = {
+      fg=c.gray, bg=utils.blend(c.gray, c.bg, 0.2)
+    },
+    DiagnosticVirtualTextHint = {
+      fg=c.paleorange, bg=utils.blend(c.paleorange, c.bg, 0.1)
+    },
+
     DiagnosticUnderLineError = { sp=c.red, attr="underline" },
     DiagnosticUnderLineWarn = { sp=c.paleyellow, attr="underline" },
     DiagnosticUnderLineInfo = { sp=c.gray, attr="underline" },
     DiagnosticUnderLineHint = { sp=c.paleorange, attr="underline" },
+
+    LspReferenceText = { bg=c.selection },
+    LspReferenceRead = { bg=c.selection },
+    LspReferenceWrite = { bg=c.selection },
+    LspCodeLens       = { fg=c.comments },
+    LspCodeLensSeparator = { fg=c.guides },
+    LspSignatureActiveParameter = { attr="italic" },
+
+    --- PLUGINS
+    VCSAdd = { fg=c.green },
+    VCSChange = { fg=c.yellow },
+    VCSDelete = { fg=c.red },
   }
 
   for grp, args in pairs(groups) do
@@ -114,6 +139,9 @@ local function set_groups(c)
   end
 
   local links = {
+    -- help syntax links it to an identifier for some godforsaken reason
+    helpHyperTextJump = { to="Tag" },
+
     SpecialComment = { to="Todo" },
     Tag = { to="Underlined" },
     SpecialChar    = { to="Special" },
@@ -139,7 +167,26 @@ local function set_groups(c)
     TSTagAttribute    = { to="TSParameter" },
     TSTagDelimiter    = { to="TSPunctBracket" },
 
-    TSVariable = { to="Identifier" }
+    TSVariable = { to="Identifier" },
+
+    gitcommitsummary = { to="Identifier" },
+    gitcommitHeader = { to="Statement" },
+    gitcommitSelectedFile = { to="VCSAdd" },
+    gitcommitDiscardedFile = { to="VCSDelete" },
+    gitcommitUnmergedFile = { to="VCSChange" },
+
+    diffFile = { to="Statement" },
+    diffSubname = { to="Function" },
+    diffOldFile = { to="VCSDelete" },
+    diffNewFile = { to="VCSAdd" },
+    diffLine = { to="VCSChange" },
+    diffAdded = { to="DiffAdd" },
+    diffChanged = { to="DiffChange" },
+    diffRemoved = { to="DiffDelete" },
+
+    GitSignsAdd = { to="VCSAdd" },
+    GitSignsChange = { to="VCSChange" },
+    GitSignsDelete = { to="VCSDelete" },
   }
 
   for from, args in pairs(links) do

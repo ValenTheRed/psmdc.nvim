@@ -27,6 +27,7 @@ colors.dark = {
   paleyellow = hsl {70, 80, 80},
 
   selection        = hsl {285, 28, 13},
+  selection2 = hsl {285, 30, 9},
   comments         = hsl {256, 21, 37},
   guides           = hsl {258, 21, 26},
   line_numbers     = hsl {258, 21, 26},
