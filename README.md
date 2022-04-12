@@ -1,4 +1,3 @@
 # psmdc
 
-## TODO
-- define colours
+A colourscheme based on Material.
