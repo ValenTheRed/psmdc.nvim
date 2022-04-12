@@ -25,7 +25,7 @@ function M.colorscheme(name)
   end
 
   vim.o.termguicolors = true
-  vim.g.colors_name = name
+  vim.g.colors_name = "psmdc_" .. name
   set_groups(colors[name])
 end
 
