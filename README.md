@@ -1,3 +1,3 @@
 # psmdc
 
-A colourscheme based on Material.
+A personal colourscheme based on Material Ocean.
