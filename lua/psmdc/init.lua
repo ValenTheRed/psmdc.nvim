@@ -132,6 +132,10 @@ local function set_groups(c)
     VCSAdd = { fg=c.green },
     VCSChange = { fg=c.yellow },
     VCSDelete = { fg=c.red },
+
+    -- Refer to telescope.vim for the groups. Dunno if they are complete.
+    TelescopeMatching = { fg=c.pink },
+    TelescopePromptPrefix = { fg=c.yellow },
   }
 
   for grp, args in pairs(groups) do
@@ -187,6 +191,8 @@ local function set_groups(c)
     GitSignsAdd = { to="VCSAdd" },
     GitSignsChange = { to="VCSChange" },
     GitSignsDelete = { to="VCSDelete" },
+
+    TelescopeSelectionCaret = { to="TelescopePromptPrefix" },
   }
 
   for from, args in pairs(links) do
