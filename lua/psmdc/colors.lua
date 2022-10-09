@@ -1,8 +1,8 @@
-local colors = {}
+local M = {}
 local utils = require("psmdc.utils")
 local hsl = require("psmdc.hsluv").hsluv_to_hex
 
-colors.dark = {
+M.dark = {
   bg = hsl {285, 10, 5},
   fg = hsl {256, 12, 64},
 
@@ -36,4 +36,4 @@ colors.dark = {
   caret            = hsl {60, 10, 62},
 }
 
-return colors
+return M
