@@ -36,4 +36,32 @@ M.dark = {
   caret            = hsl {60, 10, 62},
 }
 
+local hsluv = require("psmdc.hsluv").hsluv_to_hex
+
+M.darker = {}
+M.darker.clr = {
+  white  = hsluv {0, 0, 100},
+  black  = hsluv {0, 0, 0},
+  gray   = hsluv {0, 0, 54},
+  yellow = hsluv {52, 100, 82},
+  orange = hsluv {20, 88, 64.5},
+  red    = hsluv {7, 91.2, 54.1},
+  pink   = hsluv {337, 82, 64},
+  purple = hsluv {288, 100,  72},
+  blue   = hsluv {259, 100, 70},
+  cyan   = hsluv {224, 99, 84},
+  green  = hsluv {105, 59, 88},
+}
+M.darker.grp = {
+  bg               = hsluv {305, 100, .70},
+  fg               = hsluv {256, 0, 75},
+  comments         = hsluv {256, 0, 60},
+  selection        = hsluv {285, 28, 12},
+  cursor_line      = hsluv {285, 28, 12},
+  surface          = hsluv {305, 55, 10},
+  surfacefg        = hsluv {256, 0, 80},
+  surface_darker   = hsluv {305, 55, 3},
+  surfacefg_darker = hsluv {256, 0, 70},
+}
+
 return M
