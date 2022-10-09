@@ -71,15 +71,27 @@ local function set_groups(c)
     Delimiter = { fg=c.cyan },
 
     -- Treesitter
+    TSComment         = { to="Comment" },
+
+    TSConstant        = { to="Constant" },
+    TSConstBuiltin    = { to="Constant" },
+
+    TSString          = { to="String" },
+    TSCharacter       = { to="Character" },
+
+    TSVariable = { to="Identifier" },
+    TSVariableBuiltin = { fg=c.palepurple },
+
     TSFuncBuiltin     = { fg=c.purple },
     TSFuncMacro = { fg=c.pink },
+    TSFunction        = { to="Function" },
     TSParameter       = { fg=c.fg, attr="bold" },
-    TSMethod          = { fg=c.purple },
+    TSType            = { to="Type" },
     TSField           = { fg=c.fg },
     TSProperty        = { fg=c.fg },
     TSConstructor     = { fg=c.yellow },
+    TSMethod          = { fg=c.purple },
     TSAttribute       = { fg=c.blue, bg=c.inline_highlight, attr="italic" },
-    TSNamespace = { fg=c.fg },
 
     TSConditional     = { fg=c.blue, attr="italic" },
     TSRepeat          = { fg=c.blue, attr="italic" },
@@ -91,11 +103,20 @@ local function set_groups(c)
     TSException       = { fg=c.blue, attr="italic" },
 
     TSInclude         = { fg=c.blue, attr="italic" },
+    TSNamespace = { fg=c.fg },
 
     TSPunctBracket    = { fg=c.cyan },
     TSPunctDelimiter  = { fg=c.cyan },
 
-    TSVariableBuiltin = { fg=c.palepurple },
+    TSTodo = { to="Todo" },
+    TSNote = { to="Todo" },
+    TSWarning = { to="Todo" },
+    TSDanger  = { to="Todo" },
+    TSNone = { to="Normal" },
+
+    TSTag             = { to="TSKeyword" },
+    TSTagAttribute    = { to="TSParameter" },
+    TSTagDelimiter    = { to="TSPunctBracket" },
 
     -- Diagnostics
     DiagnosticError = { fg=c.red },
@@ -133,45 +154,18 @@ local function set_groups(c)
     VCSChange = { fg=c.yellow },
     VCSDelete = { fg=c.red },
 
+    TelescopeSelectionCaret = { to="TelescopePromptPrefix" },
+
     -- Refer to telescope.vim for the groups. Dunno if they are complete.
     TelescopeMatching = { fg=c.pink },
     TelescopePromptPrefix = { fg=c.yellow },
-  }
 
-  for grp, args in pairs(groups) do
-    utils.set_highlight(grp, args)
-  end
-
-  local links = {
     -- help syntax links it to an identifier for some godforsaken reason
     helpHyperTextJump = { to="Tag" },
 
     SpecialComment = { to="Todo" },
     Tag = { to="Underlined" },
     SpecialChar    = { to="Special" },
-
-    TSConstant        = { to="Constant" },
-    TSConstBuiltin    = { to="Constant" },
-    TSCharacter       = { to="Character" },
-    TSString          = { to="String" },
-
-    TSFunction        = { to="Function" },
-
-    TSType            = { to="Type" },
-
-    TSComment         = { to="Comment" },
-
-    TSTodo = { to="Todo" },
-    TSNote = { to="Todo" },
-    TSWarning = { to="Todo" },
-    TSDanger  = { to="Todo" },
-    TSNone = { to="Normal" },
-
-    TSTag             = { to="TSKeyword" },
-    TSTagAttribute    = { to="TSParameter" },
-    TSTagDelimiter    = { to="TSPunctBracket" },
-
-    TSVariable = { to="Identifier" },
 
     gitcommitsummary = { to="Identifier" },
     gitcommitHeader = { to="Statement" },
@@ -191,12 +185,10 @@ local function set_groups(c)
     GitSignsAdd = { to="VCSAdd" },
     GitSignsChange = { to="VCSChange" },
     GitSignsDelete = { to="VCSDelete" },
-
-    TelescopeSelectionCaret = { to="TelescopePromptPrefix" },
   }
 
-  for from, args in pairs(links) do
-    utils.set_link(from, args)
+  for from, args in pairs(groups) do
+    utils.highlight(from, args)
   end
 end
 

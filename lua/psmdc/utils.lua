@@ -35,4 +35,17 @@ function M.set_link(from, args)
   ))
 end
 
+-- grp: the group you want to set the highlight to.
+-- args: can be two things, either
+--   1. table { attr, fg, bg, sp } for gui highlight
+--   2. table { force, to } for linking
+-- Linking takes priority.
+M.highlight = function(grp, args)
+  if args.to == nil then
+    M.set_highlight(grp, args)
+  else
+    M.set_link(grp, args)
+  end
+end
+
 return M
