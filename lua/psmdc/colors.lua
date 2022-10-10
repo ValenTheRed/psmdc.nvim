@@ -6,7 +6,7 @@ M.dark = {}
 M.dark.clr = {
   white  = hsl {0, 0, 100},
   black  = hsl {0, 0, 0},
-  gray   = hsl {0, 0, 68},
+  gray   = hsl {0, 0, 55},
   red    = hsl {5, 100, 60},
   orange = hsl {14, 88, 64.5},
   yellow = hsl {57, 100, 84},
@@ -19,7 +19,7 @@ M.dark.clr = {
   pink   = hsl {337, 82, 64},
   violet = hsl {314, 34, 61},
 
-  lightorange = hsl {30, 80, 80},
+  lightorange = hsl {21, 88, 66.5},
   lightpink   = hsl {303, 80,  73},
   lightblue   = hsl {217, 24, 80},
   lightyellow = hsl {70, 80, 80},
@@ -53,11 +53,11 @@ M.darker.clr = {
   cyan   = hsluv {224, 99, 84},
   green  = hsluv {105, 59, 88},
 
-  green2  = hsluv {105, 59, 88},
+  green2 = hsluv {105, 59, 88},
   violet = hsluv {314, 34, 61},
-  brown = hsluv {20, 88, 64.5},
+  brown  = hsluv {21.5, 76, 55.3},
 
-  lightorange = hsluv {20, 88, 64.5},
+  lightorange = hsluv {14, 88, 64.5},
   lightpink   = hsluv {337, 82, 64},
   lightblue   = hsluv {259, 100, 70},
   lightyellow = hsluv {52, 100, 82},
@@ -72,7 +72,7 @@ M.darker.grp = {
   surface          = hsluv {305, 55, 10},
   surfacefg        = hsluv {256, 0, 78},
   surface_darker   = hsluv {305, 55, 4.5},
-  surfacefg_darker = hsluv {256, 0, 65},
+  surfacefg_darker = hsluv {256, 0, 70},
 }
 
 return M
