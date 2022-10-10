@@ -4,8 +4,8 @@ local psmdc = {}
 
 psmdc.normal = {
   a = { fg=c.grp.bg, bg=c.clr.purple },
-  b = { fg=c.clr.gray, bg=c.grp.selection2 },
-  c = { fg=c.clr.gray, bg=c.grp.selection },
+  b = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
+  c = { fg=c.grp.surfacefg, bg=c.grp.surface },
 }
 
 psmdc.insert = {
@@ -25,9 +25,9 @@ psmdc.replace = {
 }
 
 psmdc.inactive = {
-  a = { fg=c.grp.comments, bg=c.grp.selection2 },
-  b = { fg=c.grp.comments, bg=c.grp.selection2 },
-  c = { fg=c.grp.comments, bg=c.grp.selection2 },
+  a = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
+  b = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
+  c = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
 }
 
 return psmdc
