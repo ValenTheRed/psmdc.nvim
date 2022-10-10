@@ -66,13 +66,13 @@ M.darker.grp = {
   bg               = hsluv {305, 100, .70},
   fg               = hsluv {256, 0, 75},
   comments         = hsluv {256, 0, 60},
-  nontext          = hsluv {256, 0, 40},
+  nontext          = hsluv {256, 0, 30},
   selection        = hsluv {285, 28, 12},
-  cursor_line      = hsluv {285, 28, 12},
+  cursor_line      = hsluv {305, 55, 3},
   surface          = hsluv {305, 55, 10},
-  surfacefg        = hsluv {256, 0, 80},
-  surface_darker   = hsluv {305, 55, 3},
-  surfacefg_darker = hsluv {256, 0, 70},
+  surfacefg        = hsluv {256, 0, 78},
+  surface_darker   = hsluv {305, 55, 4.5},
+  surfacefg_darker = hsluv {256, 0, 65},
 }
 
 return M
