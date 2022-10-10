@@ -3,39 +3,31 @@ local c = require("psmdc.colors").dark
 local psmdc = {}
 
 psmdc.normal = {
-  a = { fg=c.bg, bg=c.purple },
-  b = { fg=c.gray, bg=c.selection2 },
-  c = { fg=c.gray, bg=c.selection },
+  a = { fg=c.grp.bg, bg=c.clr.purple },
+  b = { fg=c.clr.gray, bg=c.grp.selection2 },
+  c = { fg=c.clr.gray, bg=c.grp.selection },
 }
 
 psmdc.insert = {
-  a = { fg=c.bg, bg=c.pink },
-  -- b = { fg=c.gray, bg=c.selection2 },
-  -- c = { fg=c.gray, bg=c.selection },
+  a = { fg=c.grp.bg, bg=c.clr.pink },
 }
 
 psmdc.command = {
-  a = { fg=c.bg, bg=c.cyan },
-  -- b = { fg=c.gray, bg=c.selection2 },
-  -- c = { fg=c.gray, bg=c.selection },
+  a = { fg=c.grp.bg, bg=c.clr.cyan },
 }
 
 psmdc.visual = {
-  a = { fg=c.bg, bg=c.paleyellow },
-  -- b = { fg=c.gray, bg=c.selection2 },
-  -- c = { fg=c.gray, bg=c.selection },
+  a = { fg=c.grp.bg, bg=c.clr.paleyellow },
 }
 
 psmdc.replace = {
-  a = { fg=c.bg, bg=c.orange },
-  -- b = { fg=c.gray, bg=c.selection2 },
-  -- c = { fg=c.gray, bg=c.selection },
+  a = { fg=c.grp.bg, bg=c.clr.orange },
 }
 
 psmdc.inactive = {
-  a = { fg=c.comments, bg=c.selection2 },
-  b = { fg=c.comments, bg=c.selection2 },
-  c = { fg=c.comments, bg=c.selection2 },
+  a = { fg=c.grp.comments, bg=c.grp.selection2 },
+  b = { fg=c.grp.comments, bg=c.grp.selection2 },
+  c = { fg=c.grp.comments, bg=c.grp.selection2 },
 }
 
 return psmdc
