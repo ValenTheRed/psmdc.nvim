@@ -52,6 +52,15 @@ M.darker.clr = {
   blue   = hsluv {259, 100, 70},
   cyan   = hsluv {224, 99, 84},
   green  = hsluv {105, 59, 88},
+
+  green2  = hsluv {105, 59, 88},
+  violet = hsluv {314, 34, 61},
+  brown = hsluv {20, 88, 64.5},
+
+  lightorange = hsluv {20, 88, 64.5},
+  lightpink   = hsluv {337, 82, 64},
+  lightblue   = hsluv {259, 100, 70},
+  lightyellow = hsluv {52, 100, 82},
 }
 M.darker.grp = {
   bg               = hsluv {305, 100, .70},
