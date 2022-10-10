@@ -17,7 +17,7 @@ psmdc.command = {
 }
 
 psmdc.visual = {
-  a = { fg=c.grp.bg, bg=c.clr.paleyellow },
+  a = { fg=c.grp.bg, bg=c.clr.lightyellow },
 }
 
 psmdc.replace = {

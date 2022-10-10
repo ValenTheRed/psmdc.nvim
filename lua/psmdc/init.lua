@@ -12,8 +12,8 @@ local function set_groups(c)
     Directory        = { fg=c.clr.purple },
     DiffAdd          = { fg=c.clr.green2, bg=utils.blend(c.clr.green, c.grp.bg, 0.25) },
     DiffDelete       = { fg=c.clr.red, bg=utils.blend(c.clr.red, c.grp.bg, 0.1) },
-    DiffChange       = { fg=c.clr.paleorange, bg=utils.blend(c.clr.paleorange, c.grp.bg, 0.2) },
-    DiffText         = { fg=c.clr.paleorange, bg=utils.blend(c.clr.paleorange, c.grp.bg, 0.2) },
+    DiffChange       = { fg=c.clr.lightorange, bg=utils.blend(c.clr.lightorange, c.grp.bg, 0.2) },
+    DiffText         = { fg=c.clr.lightorange, bg=utils.blend(c.clr.lightorange, c.grp.bg, 0.2) },
     ErrorMsg         = { fg=c.grp.bg, bg=c.clr.red, attr="bold" },
     FoldColumn       = { fg=c.grp.comments, bg=c.grp.bg },
     Folded           = {
@@ -41,7 +41,7 @@ local function set_groups(c)
     StatusLineNC     = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
     TabLineFill      = { bg=c.grp.bg },
     TabLine      = { fg=c.grp.surfacefg, bg=c.grp.surface },
-    TabLineSel       = { fg=c.grp.bg, bg=c.clr.palepink },
+    TabLineSel       = { fg=c.grp.bg, bg=c.clr.lightpink },
     Title            = { fg=c.clr.green },
     VertSplit        = { fg=c.grp.nontext },
     Visual           = { fg=c.grp.fg, bg=c.grp.selection },
@@ -57,7 +57,7 @@ local function set_groups(c)
     Identifier = { fg=c.grp.fg },
     Function   = { fg=c.clr.purple },
     Statement  = { fg=c.clr.blue },
-    Operator   = { fg=c.clr.palepink },
+    Operator   = { fg=c.clr.lightpink },
     PreProc    = { fg=c.clr.blue },
     Include    = { fg=c.clr.blue },
     Define     = { fg=c.clr.pink },
@@ -80,7 +80,7 @@ local function set_groups(c)
     TSCharacter       = { to="Character" },
 
     TSVariable = { to="Identifier" },
-    TSVariableBuiltin = { fg=c.clr.palepurple },
+    TSVariableBuiltin = { fg=c.clr.lightpurple },
 
     TSFuncBuiltin     = { fg=c.clr.purple },
     TSFuncMacro = { fg=c.clr.pink },
@@ -95,7 +95,7 @@ local function set_groups(c)
 
     TSConditional     = { fg=c.clr.blue, attr="italic" },
     TSRepeat          = { fg=c.clr.blue, attr="italic" },
-    TSOperator        = { fg=c.clr.palepink },
+    TSOperator        = { fg=c.clr.lightpink },
     TSKeyword         = { fg=c.clr.blue },
     TSKeywordFunction = { fg=c.clr.blue },
     TSKeywordReturn   = { fg=c.clr.blue, attr="italic" },
@@ -120,27 +120,27 @@ local function set_groups(c)
 
     -- Diagnostics
     DiagnosticError = { fg=c.clr.red },
-    DiagnosticWarn = { fg=c.clr.paleyellow },
+    DiagnosticWarn = { fg=c.clr.lightyellow },
     DiagnosticInfo = { fg=c.clr.gray },
-    DiagnosticHint = { fg=c.clr.paleorange },
+    DiagnosticHint = { fg=c.clr.lightorange },
 
     DiagnosticVirtualTextError = {
       fg=c.clr.red, bg=utils.blend(c.clr.red, c.grp.bg, 0.1)
     },
     DiagnosticVirtualTextWarn = {
-      fg=c.clr.paleyellow, bg=utils.blend(c.clr.paleyellow, c.grp.bg, 0.1)
+      fg=c.clr.lightyellow, bg=utils.blend(c.clr.lightyellow, c.grp.bg, 0.1)
     },
     DiagnosticVirtualTextInfo = {
       fg=c.clr.gray, bg=utils.blend(c.clr.gray, c.grp.bg, 0.2)
     },
     DiagnosticVirtualTextHint = {
-      fg=c.clr.paleorange, bg=utils.blend(c.clr.paleorange, c.grp.bg, 0.1)
+      fg=c.clr.lightorange, bg=utils.blend(c.clr.lightorange, c.grp.bg, 0.1)
     },
 
     DiagnosticUnderLineError = { sp=c.clr.red, attr="underline" },
-    DiagnosticUnderLineWarn = { sp=c.clr.paleyellow, attr="underline" },
+    DiagnosticUnderLineWarn = { sp=c.clr.lightyellow, attr="underline" },
     DiagnosticUnderLineInfo = { sp=c.clr.gray, attr="underline" },
-    DiagnosticUnderLineHint = { sp=c.clr.paleorange, attr="underline" },
+    DiagnosticUnderLineHint = { sp=c.clr.lightorange, attr="underline" },
 
     LspReferenceText = { bg=c.grp.surface },
     LspReferenceRead = { bg=c.grp.surface },

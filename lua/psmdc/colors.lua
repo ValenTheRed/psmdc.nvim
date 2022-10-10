@@ -19,10 +19,10 @@ M.dark.clr = {
   pink   = hsl {337, 82, 64},
   violet = hsl {314, 34, 61},
 
-  paleorange = hsl {30, 80, 80},
-  palepink   = hsl {303, 80,  73},
-  paleblue   = hsl {217, 24, 80},
-  paleyellow = hsl {70, 80, 80},
+  lightorange = hsl {30, 80, 80},
+  lightpink   = hsl {303, 80,  73},
+  lightblue   = hsl {217, 24, 80},
+  lightyellow = hsl {70, 80, 80},
 }
 M.dark.grp = {
   bg               = hsl {285, 10, 5},
