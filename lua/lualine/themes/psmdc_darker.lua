@@ -1,4 +1,4 @@
-local c = require("psmdc.colors").dark
+local c = require("psmdc.colors").darker
 
 local psmdc = {}
 
@@ -17,7 +17,7 @@ psmdc.command = {
 }
 
 psmdc.visual = {
-  a = { fg=c.grp.bg, bg=c.clr.lightyellow },
+  a = { fg=c.grp.bg, bg=c.clr.yellow },
 }
 
 psmdc.replace = {
