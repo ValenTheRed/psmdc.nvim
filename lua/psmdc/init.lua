@@ -8,7 +8,7 @@ local function set_groups(c)
     Cursor           = { attr="reverse" },
     CursorLine       = { bg=c.grp.cursor_line },
     CursorColumn     = { to="CursorLine" },
-    CursorLineNr     = { fg=c.clr.white, bg=c.grp.cursor_line },
+    CursorLineNr     = { bg=c.grp.cursor_line, attr="underline" },
     Directory        = { fg=c.clr.purple },
     DiffAdd          = { fg=c.clr.green2, bg=utils.blend(c.clr.green, c.grp.bg, 0.25) },
     DiffDelete       = { fg=c.clr.red, bg=utils.blend(c.clr.red, c.grp.bg, 0.1) },
@@ -163,11 +163,10 @@ local function set_groups(c)
     VCSChange = { fg=c.clr.yellow },
     VCSDelete = { fg=c.clr.red },
 
-    TelescopeSelectionCaret = { to="TelescopePromptPrefix" },
-
     -- Refer to telescope.vim for the groups. Dunno if they are complete.
     TelescopeMatching = { fg=c.clr.pink },
-    TelescopePromptPrefix = { fg=c.clr.yellow, bg=c.grp.selection },
+    TelescopePromptPrefix = { fg=c.clr.yellow },
+    TelescopeSelectionCaret = {  fg=c.clr.yellow, bg=c.grp.selection },
 
     -- help syntax links it to an identifier for some godforsaken reason
     helpHyperTextJump = { to="Tag" },
