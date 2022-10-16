@@ -29,9 +29,9 @@ psmdc.replace = {
 }
 
 psmdc.inactive = {
-  a = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
-  b = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
-  c = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
+  a = { fg=c.grp.bg, bg=c.clr.violet },
+  b = { fg=c.clr.violet, bg=c.grp.surface_darker },
+  c = { fg=c.grp.surfacefg, bg=c.grp.surface },
 }
 
 return psmdc
