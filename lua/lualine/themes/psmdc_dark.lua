@@ -1,4 +1,4 @@
-local c = require("psmdc.colors").darker
+local c = require("psmdc.colors").dark
 
 local psmdc = {}
 

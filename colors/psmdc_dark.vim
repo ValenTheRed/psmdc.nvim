@@ -3,4 +3,4 @@
 " lua package.loaded["psmdc.colors"] = nil
 " lua package.loaded["psmdc.utils"] = nil
 lua vim.opt.background = "dark"
-lua require("psmdc").colorscheme("darker")
+lua require("psmdc").colorscheme("dark")
