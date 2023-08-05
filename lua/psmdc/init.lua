@@ -76,7 +76,7 @@ local function set_groups(c)
     Special      = { fg=c.clr.violet },
     Underlined   = { underline=true },
     Error        = { fg=c.grp.bg, bg=c.clr.red },
-    Todo         = { fg=c.clr.orange, italic=true,reverse },
+    Todo         = { fg=c.clr.orange, italic=true, reverse=true },
     Delimiter    = { fg=c.clr.cyan },
 
     -- Treesitter
