@@ -14,38 +14,8 @@ function M.blend(fg, bg, alpha)
   return hsluv.rgb_to_hex {blendChannel(1), blendChannel(2), blendChannel(3)}
 end
 
-function M.set_highlight(grp, args)
-  vim.api.nvim_command(string.format(
-    "highlight %s gui=%s guifg=%s guibg=%s guisp=%s",
-    grp,
-    args.attr or "NONE",
-    args.fg or "NONE",
-    args.bg or "NONE",
-    args.sp or "NONE"
-  ))
-end
-
-function M.set_link(from, args)
-  local args = args or {}
-  vim.api.nvim_command(string.format(
-    "highlight%s link %s %s",
-    args.force and "!" or "",
-    from,
-    args.to or "NONE"
-  ))
-end
-
--- grp: the group you want to set the highlight to.
--- args: can be two things, either
---   1. table { attr, fg, bg, sp } for gui highlight
---   2. table { force, to } for linking
--- Linking takes priority.
-M.highlight = function(grp, args)
-  if args.to == nil then
-    M.set_highlight(grp, args)
-  else
-    M.set_link(grp, args)
-  end
+M.highlight = function(name, val)
+  vim.api.nvim_set_hl(0, name, val)
 end
 
 return M
