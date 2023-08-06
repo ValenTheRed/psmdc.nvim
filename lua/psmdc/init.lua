@@ -74,58 +74,121 @@ local function set_groups(c)
     Structure    = { link="Statement" },
     Typedef      = { link="Statement" },
     Special      = { fg=c.clr.violet },
+    Debug        = { link="Special" },
     Underlined   = { underline=true },
     Error        = { fg=c.grp.bg, bg=c.clr.red },
     Todo         = { fg=c.clr.orange, italic=true, reverse=true },
     Delimiter    = { fg=c.clr.cyan },
 
-    -- Treesitter
-    TSComment         = { link="Comment" },
+    -- Treesitter capture groups
+    -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
+    --- Misc
+    ["@comment"]               = { link="Comment" }, -- line and block comments
+    ["@comment.documentation"] = { link="Comment" }, -- comments documenting code
+    ["@error"]                 = { sp=c.clr.red, underdashed=true }, -- syntax/parser errors. will switch on even if you've not completed your code.
+    ["@none"]                  = { }, -- completely disable the highlight
+    ["@preproc"]               = { link="PreProc" },-- various preprocessor directives & shebangs
+    ["@define"]                = { link="Define" }, -- preprocessor definition directives
+    ["@operator"]              = { link="Operator" }, -- symbolic operators (e.g. `+` / `*`)
 
-    TSConstant        = { link="Constant" },
-    TSConstBuiltin    = { link="Constant" },
+    --- Punctuation
+    ["@punctuation.delimiter"] = { link="Delimiter" }, -- delimiters (e.g. `;` / `.` / `,`)
+    ["@punctuation.bracket"]   = { link="Delimiter" }, -- brackets (e.g. `()` / `{}` / `[]`)
+    ["@punctuation.special"]   = { link="Delimiter" }, -- special symbols (e.g. `{}` in string interpolation)
 
-    TSString          = { link="String" },
-    TSCharacter       = { link="Character" },
+    --- Literals
+    ["@string"]               = { link="String" }, -- string literals
+    ["@string.documentation"] = { link="String" }, -- string documenting code (e.g. Python docstrings)
+    ["@string.regex"]         = { link="String" }, -- regular expressions
+    ["@string.escape"]        = { link="Special" }, -- escape sequences
+    ["@string.special"]       = { link="String" }, -- other special strings (e.g. dates)
 
-    TSVariable        = { link="Identifier" },
-    TSVariableBuiltin = { fg=c.clr.lightpurple },
+    ["@character"]            = { link="Character" }, -- character literals
+    ["@character.special"]    = { link="Character" }, -- special characters (e.g. wildcards)
 
-    TSFuncBuiltin     = { link="Function" },
-    TSFuncMacro       = { link="Macro" },
-    TSFunction        = { link="Function" },
-    TSParameter       = { fg=c.grp.fg, bold=true },
-    TSType            = { link="Type" },
-    TSField           = { fg=c.grp.fg },
-    TSProperty        = { fg=c.grp.fg },
-    TSConstructor     = { link="Type" },
-    TSMethod          = { link="Function" },
-    TSAttribute       = { fg=c.clr.blue, italic=true },
+    ["@boolean"]              = { link="Boolean" },-- boolean literals
+    ["@number"]               = { link="Number" }, -- numeric literals
+    ["@float"]                = { link="Float" }, -- floating-point number literals
 
-    TSConditional     = { link="Conditional" },
-    TSRepeat          = { link="Repeat" },
-    TSOperator        = { link="Operator" },
-    TSKeyword         = { link="Statement" },
-    TSKeywordFunction = { link="Statement" },
-    TSKeywordReturn   = { fg=c.clr.blue, italic=true },
-    TSKeywordOperator = { fg=c.clr.blue, italic=true },
-    TSException       = { link="Exception" },
+    --- Functions
+    ["@function"]         = { link="Function" }, -- function definitions
+    ["@function.builtin"] = { link="Function" }, -- built-in functions
+    ["@function.call"]    = { link="Function" }, -- function calls
+    ["@function.macro"]   = { link="Macro" }, -- preprocessor macros
 
-    TSInclude   = { link="Include" },
-    TSNamespace = { fg=c.grp.fg },
+    ["@method"]           = { link="Function" }, -- method definitions
+    ["@method.call"]      = { link="Function" }, -- method calls
 
-    TSPunctBracket   = { fg=c.clr.cyan },
-    TSPunctDelimiter = { fg=c.clr.cyan },
+    ["@constructor"]      = { link="Type" }, -- constructor calls and definitions
+    ["@parameter"]        = { fg=c.grp.fg, bold=true }, -- parameters of a function
 
-    TSTodo = { link="Todo" },
-    TSNote = { link="Todo" },
-    TSWarning = { link="Todo" },
-    TSDanger  = { link="Todo" },
-    TSNone = { link="Normal" },
+    --- Keywords
+    ["@keyword"]             = { link="Keyword" }, -- various keywords
+    ["@keyword.coroutine"]   = { link="Keyword" }, -- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
+    ["@keyword.function"]    = { link="Keyword" }, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
+    ["@keyword.operator"]    = { fg=c.clr.lightpink, italic=true }, -- operators that are English words (e.g. `and` / `or`)
+    ["@keyword.return"]      = { fg=c.clr.blue, italic=true }, -- keywords like `return` and `yield`
 
-    TSTag             = { link="TSKeyword" },
-    TSTagAttribute    = { link="TSParameter" },
-    TSTagDelimiter    = { link="TSPunctBracket" },
+    ["@conditional"]         = { link="Conditional" }, -- keywords related to conditionals (e.g. `if` / `else`)
+    ["@conditional.ternary"] = { link="Conditional" }, -- ternary operator (e.g. `?` / `:`)
+
+    ["@repeat"]              = { link="Repeat" }, -- keywords related to loops (e.g. `for` / `while`)
+    ["@debug"]               = { link="Debug" }, -- keywords related to debugging
+    ["@label"]               = { link="Label" }, -- GOTO and other labels (e.g. `label:` in C)
+    ["@include"]             = { link="Include" }, -- keywords for including modules (e.g. `import` / `from` in Python)
+    ["@exception"]           = { link="Exception" }, -- keywords related to exceptions (e.g. `throw` / `catch`)
+
+    --- Types
+    ["@type"]            = { link="Type" }, -- type or class definitions and annotations
+    ["@type.builtin"]    = { link="Type" }, -- built-in types
+    ["@type.definition"] = { link="Type" }, -- type definitions (e.g. typedef struct{...} name; name gets highlighted)
+    ["@type.qualifier"]  = { link="Keyword" }, -- type qualifiers (e.g. `const`)
+
+    ["@storageclass"]    = { link="StorageClass" }, -- modifiers that affect storage in memory or life-time
+    ["@attribute"]       =  { fg=c.clr.brown, bold=true }, -- attribute annotations (e.g. Python decorators, c++ [[deprecated("because")]])
+    ["@field"]           = { fg=c.grp.fg }, -- object and struct fields
+    ["@property"]        = { fg=c.grp.fg }, -- similar to `@field`
+
+    --- Identifiers
+    ["@variable"]         = { link="Variable" }, -- various variable names
+    ["@variable.builtin"] = { fg=c.clr.lightpurple }, -- built-in variable names (e.g. `this`)
+
+    ["@constant"]         = { link="Constant" }, -- constant identifiers
+    ["@constant.builtin"] = { link="Constant" }, -- built-in constant values
+    ["@constant.macro"]   = { link="Define" }, -- constants defined by the preprocessor
+
+    ["@namespace"]        = { fg=c.grp.fg }, -- modules or namespaces
+    ["@symbol"]           = { link="Identifier" }, -- symbols or atoms
+
+    --- Text: manily for markup languages
+    ["@text"]                  = { fg=c.grp.fg }, -- non-structured text
+    ["@text.strong"]           = { bold=true }, -- bold text
+    ["@text.emphasis"]         = { italic=true }, -- text with emphasis
+    ["@text.underline"]        = { link="Underlined" }, -- underlined text
+    ["@text.strike"]           = { strikethrough=true }, -- strikethrough text
+    ["@text.title"]            = { link="Statement" }, -- text that is part of a title
+    ["@text.quote"]            = { link="String" }, -- text quotations
+    ["@text.uri"]              = { link="Underlined" }, -- URIs (e.g. hyperlinks)
+    ["@text.math"]             = { link="Special" }, -- math environments (e.g. `$ ... $` in LaTeX)
+    ["@text.environment"]      = { link="@text" }, -- text environments of markup languages
+    ["@text.environment.name"] = { link="Type" }, -- text indicating the type of an environment
+    ["@text.reference"]        = { sp=c.clr.brown, underline=true }, -- text references, footnotes, citations, etc.
+
+    ["@text.literal"]          = { fg=c.clr.lightyellow }, -- literal or verbatim text (e.g., inline code)
+    ["@text.literal.block"]    = { link="@text" }, -- literal or verbatim text as a stand-alone block (use priority 90 for blocks with injections)
+
+    ["@text.todo"]             = { link="Todo" }, -- todo notes
+    ["@text.note"]             = { fg=c.grp.fg, italic=true, reverse=true }, -- info notes
+    ["@text.warning"]          = { fg=c.clr.yellow, italic=true, reverse=true }, -- warning notes
+    ["@text.danger"]           = { fg=c.clr.red, italic=true, reverse=true }, -- danger/error notes
+
+    ["@text.diff.add"]         = { link="diffRemoved" },-- added text (for diff files)
+    ["@text.diff.delete"]      = { link="diffAdded" }, -- deleted text (for diff files)
+
+    --- Tags: used for XML-like tags
+    ["@tag"]           = { link="Keyword" }, -- XML tag names
+    ["@tag.attribute"] = { link="@parameter" }, -- XML tag attributes
+    ["@tag.delimiter"] = { link="@punctuation.delimiter" }, -- XML tag delimiters
 
     -- Diagnostics
     DiagnosticError = { fg=c.clr.red },
