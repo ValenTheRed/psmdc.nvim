@@ -6,6 +6,7 @@ local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
 M.dark = {}
 M.dark.clr = {
+  black_white  = hsluv {0, 0, 100},
   white  = hsluv {0, 0, 100},
   black  = hsluv {0, 0, 0},
   gray   = hsluv {0, 0, 54},
@@ -42,6 +43,7 @@ M.dark.grp = {
 
 M.light = {}
 M.light.clr = {
+  black_white  = hsluv {0, 0, 0},
   white  = hsluv {0, 0, 100},
   black  = hsluv {0, 0, 0},
   gray   = hsluv {0, 0, 54},
