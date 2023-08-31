@@ -203,6 +203,34 @@ local function set_groups(c)
     ["@tag.attribute"] = { link="@parameter" }, -- XML tag attributes
     ["@tag.delimiter"] = { link="@punctuation.delimiter" }, -- XML tag delimiters
 
+    -- LSP semantic tokens (type)
+    -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
+    -- :h lsp-semantic-highlight
+    ["@lsp.type.class"] = { link="Type" },
+    ["@lsp.type.decorator"] = { link="@attribute" },
+    ["@lsp.type.enum"] = { link="Type" },
+    ["@lsp.type.enumMember"] = { link="Constant" },
+    ["@lsp.type.function"] = { link="Function" },
+    ["@lsp.type.interface"] = { link="Type" },
+    ["@lsp.type.macro"] = { link="Macro" },
+    ["@lsp.type.method"] = { link="Function" },
+    ["@lsp.type.namespace"] = { link="@namespace" },
+    ["@lsp.type.parameter"] = { link="@parameter" },
+    ["@lsp.type.property"] = { link="@property" },
+    ["@lsp.type.struct"] = { link="Type" },
+    ["@lsp.type.type"] = { link="Type" },
+    ["@lsp.type.typeParameter"] = { link="Type" }, -- https://en.wikipedia.org/wiki/TypeParameter
+    ["@lsp.type.variable"] = { link="Identifier" },
+
+    ["@lsp.type.comment"] = { link="Comment" },
+    ["@lsp.type.event"] = {},
+    ["@lsp.type.modifier"] = {},
+    ["@lsp.type.keyword"] = { link="Keyword" },
+    ["@lsp.type.number"] = { link="Number" },
+    ["@lsp.type.operator"] = { link="Operator" },
+    ["@lsp.type.regexp"] = { link="String" },
+    ["@lsp.type.string"] = { link="String" },
+
     -- Diagnostics
     DiagnosticError = { fg=c.clr.red },
     DiagnosticWarn = { fg=c.clr.lightyellow },
