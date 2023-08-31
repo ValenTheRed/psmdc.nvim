@@ -4,101 +4,101 @@ local colors = require("psmdc.colors")
 
 local function set_groups(c)
   local groups = {
-    ColorColumn      = { bg=c.grp.surface },
+    ColorColumn      = { bg=c.surface },
     Cursor           = { reverse=true },
-    CursorLine       = { bg=c.grp.cursor_line },
+    CursorLine       = { bg=c.cursor_line },
     CursorColumn     = { link="CursorLine" },
-    CursorLineNr     = { bg=c.grp.cursor_line, underline=true },
-    Directory        = { fg=c.clr.purple },
-    DiffAdd          = { fg=c.clr.green2, bg=utils.blend(c.clr.green, c.grp.bg, 0.25) },
-    DiffDelete       = { fg=c.clr.red, bg=utils.blend(c.clr.red, c.grp.bg, 0.1) },
-    DiffChange       = { fg=c.clr.lightorange, bg=utils.blend(c.clr.lightorange, c.grp.bg, 0.2) },
-    DiffText         = { fg=c.clr.lightorange, bg=utils.blend(c.clr.lightorange, c.grp.bg, 0.2) },
-    ErrorMsg         = { fg=c.grp.bg, bg=c.clr.red, bold=true },
+    CursorLineNr     = { bg=c.cursor_line, underline=true },
+    Directory        = { fg=c.purple },
+    DiffAdd          = { fg=c.green2, bg=utils.blend(c.green, c.bg, 0.25) },
+    DiffDelete       = { fg=c.red, bg=utils.blend(c.red, c.bg, 0.1) },
+    DiffChange       = { fg=c.lightorange, bg=utils.blend(c.lightorange, c.bg, 0.2) },
+    DiffText         = { fg=c.lightorange, bg=utils.blend(c.lightorange, c.bg, 0.2) },
+    ErrorMsg         = { fg=c.bg, bg=c.red, bold=true },
     Folded           = {
-      fg=c.clr.lightorange, bg=utils.blend(c.clr.lightorange, c.grp.bg, 0.1), bold=true
+      fg=c.lightorange, bg=utils.blend(c.lightorange, c.bg, 0.1), bold=true
     },
-    LineNr           = { fg=c.grp.comments },
+    LineNr           = { fg=c.comments },
     FoldColumn       = { link="LineNr" },
-    MatchParen       = { bold=true, italic=true, bg=utils.blend(c.clr.black_white, c.grp.bg, 0.4) }, -- reverse has the cursor turn invisible when on a bracket
-    ModeMsg          = { fg=c.clr.purple, },
+    MatchParen       = { bold=true, italic=true, bg=utils.blend(c.black_white, c.bg, 0.4) }, -- reverse has the cursor turn invisible when on a bracket
+    ModeMsg          = { fg=c.purple, },
     MoreMsg          = { link="ModeMsg" },
-    NonText          = { fg=c.grp.nontext },
+    NonText          = { fg=c.nontext },
     Whitespace       = { link="NonText" },
-    Normal           = { fg=c.grp.fg, bg=c.grp.bg },
-    Pmenu            = { fg=c.grp.surfacefg, bg=c.grp.surface },
-    PmenuSel         = { fg=c.grp.bg, bg=c.clr.pink },
-    PmenuSbar        = { bg=c.grp.surface },
-    PmenuThumb       = { bg=c.grp.surfacefg },
-    Question         = { fg=c.clr.purple },
-    Search           = { fg=c.clr.white, bg=c.clr.gray },
+    Normal           = { fg=c.fg, bg=c.bg },
+    Pmenu            = { fg=c.surfacefg, bg=c.surface },
+    PmenuSel         = { fg=c.bg, bg=c.pink },
+    PmenuSbar        = { bg=c.surface },
+    PmenuThumb       = { bg=c.surfacefg },
+    Question         = { fg=c.purple },
+    Search           = { fg=c.white, bg=c.gray },
     CurSearch        = { link="Search" },
     IncSearch        = { link="Search" },
-    SignColumn       = { fg=c.grp.fg, bg=c.grp.bg },
-    SpecialKey       = { fg=c.grp.comments },
-    SpellCap         = { fg=c.clr.purple, undercurl=true },
-    SpellBad         = { fg=c.clr.red, undercurl=true },
-    StatusLine       = { fg=c.grp.surfacefg, bg=c.grp.surface },
-    StatusLineNC     = { fg=c.grp.surfacefg_darker, bg=c.grp.surface_darker },
-    TabLineFill      = { bg=c.grp.bg },
-    TabLine          = { fg=c.grp.surfacefg, bg=c.grp.surface },
-    TabLineSel       = { fg=c.grp.bg, bg=c.clr.lightpink },
-    Title            = { fg=c.clr.green },
-    VertSplit        = { fg=c.grp.nontext },
-    Visual           = { fg=c.grp.fg, bg=c.grp.selection },
-    WarningMsg       = { fg=c.clr.red },
-    WildMenu         = { fg=c.grp.bg, bg=c.clr.cyan },
+    SignColumn       = { fg=c.fg, bg=c.bg },
+    SpecialKey       = { fg=c.comments },
+    SpellCap         = { fg=c.purple, undercurl=true },
+    SpellBad         = { fg=c.red, undercurl=true },
+    StatusLine       = { fg=c.surfacefg, bg=c.surface },
+    StatusLineNC     = { fg=c.surfacefg_darker, bg=c.surface_darker },
+    TabLineFill      = { bg=c.bg },
+    TabLine          = { fg=c.surfacefg, bg=c.surface },
+    TabLineSel       = { fg=c.bg, bg=c.lightpink },
+    Title            = { fg=c.green },
+    VertSplit        = { fg=c.nontext },
+    Visual           = { fg=c.fg, bg=c.selection },
+    WarningMsg       = { fg=c.red },
+    WildMenu         = { fg=c.bg, bg=c.cyan },
 
     -- Syntax :h group-name
-    Comment    = { fg=c.grp.comments },
-    Conceal    = { fg=c.clr.brown, bg=c.grp.bg },
+    Comment    = { fg=c.comments },
+    Conceal    = { fg=c.brown, bg=c.bg },
 
-    Constant   = { fg=c.clr.orange },
-    Number   = { fg=c.clr.orange },
-    Float   = { fg=c.clr.orange },
-    Boolean   = { fg=c.clr.orange },
-    String     = { fg=c.clr.green },
+    Constant   = { fg=c.orange },
+    Number   = { fg=c.orange },
+    Float   = { fg=c.orange },
+    Boolean   = { fg=c.orange },
+    String     = { fg=c.green },
     Character  = { link="String" },
 
-    Identifier = { fg=c.grp.fg },
-    Function   = { fg=c.clr.purple },
+    Identifier = { fg=c.fg },
+    Function   = { fg=c.purple },
 
-    Statement   = { fg=c.clr.blue },
-    Conditional = { fg=c.clr.blue, italic=true },
-    Repeat      = { fg=c.clr.blue, italic=true },
-    Label       = { fg=c.clr.fg, italic=true },
-    Operator     = { fg=c.clr.lightpink },
-    Keyword   = { fg=c.clr.blue },
-    Exception   = { fg=c.clr.blue, italic=true },
+    Statement   = { fg=c.blue },
+    Conditional = { fg=c.blue, italic=true },
+    Repeat      = { fg=c.blue, italic=true },
+    Label       = { fg=c.fg, italic=true },
+    Operator     = { fg=c.lightpink },
+    Keyword   = { fg=c.blue },
+    Exception   = { fg=c.blue, italic=true },
 
-    PreProc      = { fg=c.clr.blue, italic=true },
-    Include      = { fg=c.clr.blue, italic=true },
-    Define       = { fg=c.clr.pink },
+    PreProc      = { fg=c.blue, italic=true },
+    Include      = { fg=c.blue, italic=true },
+    Define       = { fg=c.pink },
     Macro        = { link="Define" },
     PreCondit    = { link="Statement" },
 
-    Type         = { fg=c.clr.yellow },
+    Type         = { fg=c.yellow },
     StorageClass = { link="Statement" },
     Structure    = { link="Statement" },
     Typedef      = { link="Statement" },
 
-    Special      = { fg=c.clr.violet },
-    SpecialChar      = { fg=c.clr.violet },
+    Special      = { fg=c.violet },
+    SpecialChar      = { fg=c.violet },
     Tag = { link="Underlined" },
-    Delimiter    = { fg=c.clr.cyan },
+    Delimiter    = { fg=c.cyan },
     SpecialComment = { link="Todo" },
     Debug        = { link="Special" },
 
     Underlined   = { underline=true },
-    Error        = { fg=c.grp.bg, bg=c.clr.red },
-    Todo         = { fg=c.clr.orange, italic=true, reverse=true },
+    Error        = { fg=c.bg, bg=c.red },
+    Todo         = { fg=c.orange, italic=true, reverse=true },
 
     -- Treesitter capture groups
     -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
     --- Misc
     ["@comment"]               = { link="Comment" }, -- line and block comments
     ["@comment.documentation"] = { link="Comment" }, -- comments documenting code
-    ["@error"]                 = { sp=c.clr.red, underdashed=true }, -- syntax/parser errors. will switch on even if you've not completed your code.
+    ["@error"]                 = { sp=c.red, underdashed=true }, -- syntax/parser errors. will switch on even if you've not completed your code.
     ["@none"]                  = { }, -- completely disable the highlight
     ["@preproc"]               = { link="PreProc" },-- various preprocessor directives & shebangs
     ["@define"]                = { link="Define" }, -- preprocessor definition directives
@@ -133,14 +133,14 @@ local function set_groups(c)
     ["@method.call"]      = { link="Function" }, -- method calls
 
     ["@constructor"]      = { link="Type" }, -- constructor calls and definitions
-    ["@parameter"]        = { fg=c.grp.fg, bold=true }, -- parameters of a function
+    ["@parameter"]        = { fg=c.fg, bold=true }, -- parameters of a function
 
     --- Keywords
     ["@keyword"]             = { link="Keyword" }, -- various keywords
     ["@keyword.coroutine"]   = { link="Keyword" }, -- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
     ["@keyword.function"]    = { link="Keyword" }, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
-    ["@keyword.operator"]    = { fg=c.clr.lightpink, italic=true }, -- operators that are English words (e.g. `and` / `or`)
-    ["@keyword.return"]      = { fg=c.clr.blue, italic=true }, -- keywords like `return` and `yield`
+    ["@keyword.operator"]    = { fg=c.lightpink, italic=true }, -- operators that are English words (e.g. `and` / `or`)
+    ["@keyword.return"]      = { fg=c.blue, italic=true }, -- keywords like `return` and `yield`
 
     ["@conditional"]         = { link="Conditional" }, -- keywords related to conditionals (e.g. `if` / `else`)
     ["@conditional.ternary"] = { link="Conditional" }, -- ternary operator (e.g. `?` / `:`)
@@ -158,13 +158,13 @@ local function set_groups(c)
     ["@type.qualifier"]  = { link="Keyword" }, -- type qualifiers (e.g. `const`)
 
     ["@storageclass"]    = { link="StorageClass" }, -- modifiers that affect storage in memory or life-time
-    ["@attribute"]       =  { fg=c.clr.brown, bold=true }, -- attribute annotations (e.g. Python decorators, c++ [[deprecated("because")]])
+    ["@attribute"]       =  { fg=c.brown, bold=true }, -- attribute annotations (e.g. Python decorators, c++ [[deprecated("because")]])
     ["@field"]           = { link="Identifier" }, -- object and struct fields
     ["@property"]        = { link="Identifier" }, -- similar to `@field`
 
     --- Identifiers
     ["@variable"]         = { link="Identifier" }, -- various variable names
-    ["@variable.builtin"] = { fg=c.clr.lightpurple }, -- built-in variable names (e.g. `this`)
+    ["@variable.builtin"] = { fg=c.lightpurple }, -- built-in variable names (e.g. `this`)
 
     ["@constant"]         = { link="Constant" }, -- constant identifiers
     ["@constant.builtin"] = { link="Constant" }, -- built-in constant values
@@ -174,7 +174,7 @@ local function set_groups(c)
     ["@symbol"]           = { link="Identifier" }, -- symbols or atoms
 
     --- Text: manily for markup languages
-    ["@text"]                  = { fg=c.grp.fg }, -- non-structured text
+    ["@text"]                  = { fg=c.fg }, -- non-structured text
     ["@text.strong"]           = { bold=true }, -- bold text
     ["@text.emphasis"]         = { italic=true }, -- text with emphasis
     ["@text.underline"]        = { link="Underlined" }, -- underlined text
@@ -185,15 +185,15 @@ local function set_groups(c)
     ["@text.math"]             = { link="Special" }, -- math environments (e.g. `$ ... $` in LaTeX)
     ["@text.environment"]      = { link="@text" }, -- text environments of markup languages
     ["@text.environment.name"] = { link="Type" }, -- text indicating the type of an environment
-    ["@text.reference"]        = { sp=c.clr.brown, underline=true }, -- text references, footnotes, citations, etc.
+    ["@text.reference"]        = { sp=c.brown, underline=true }, -- text references, footnotes, citations, etc.
 
-    ["@text.literal"]          = { fg=c.clr.lightyellow }, -- literal or verbatim text (e.g., inline code)
+    ["@text.literal"]          = { fg=c.lightyellow }, -- literal or verbatim text (e.g., inline code)
     ["@text.literal.block"]    = { link="@text" }, -- literal or verbatim text as a stand-alone block (use priority 90 for blocks with injections)
 
     ["@text.todo"]             = { link="Todo" }, -- todo notes
-    ["@text.note"]             = { fg=c.grp.fg, italic=true, reverse=true }, -- info notes
-    ["@text.warning"]          = { fg=c.clr.yellow, italic=true, reverse=true }, -- warning notes
-    ["@text.danger"]           = { fg=c.clr.red, italic=true, reverse=true }, -- danger/error notes
+    ["@text.note"]             = { fg=c.fg, italic=true, reverse=true }, -- info notes
+    ["@text.warning"]          = { fg=c.yellow, italic=true, reverse=true }, -- warning notes
+    ["@text.danger"]           = { fg=c.red, italic=true, reverse=true }, -- danger/error notes
 
     ["@text.diff.add"]         = { link="diffRemoved" },-- added text (for diff files)
     ["@text.diff.delete"]      = { link="diffAdded" }, -- deleted text (for diff files)
@@ -232,45 +232,45 @@ local function set_groups(c)
     ["@lsp.type.string"] = { link="String" },
 
     -- Diagnostics
-    DiagnosticError = { fg=c.clr.red },
-    DiagnosticWarn = { fg=c.clr.lightyellow },
-    DiagnosticInfo = { fg=c.clr.gray },
-    DiagnosticHint = { fg=c.clr.lightorange },
+    DiagnosticError = { fg=c.red },
+    DiagnosticWarn = { fg=c.lightyellow },
+    DiagnosticInfo = { fg=c.gray },
+    DiagnosticHint = { fg=c.lightorange },
 
     DiagnosticVirtualTextError = {
-      fg=c.clr.red, bg=utils.blend(c.clr.red, c.grp.bg, 0.1)
+      fg=c.red, bg=utils.blend(c.red, c.bg, 0.1)
     },
     DiagnosticVirtualTextWarn = {
-      fg=c.clr.lightyellow, bg=utils.blend(c.clr.lightyellow, c.grp.bg, 0.1)
+      fg=c.lightyellow, bg=utils.blend(c.lightyellow, c.bg, 0.1)
     },
     DiagnosticVirtualTextInfo = {
-      fg=c.clr.gray, bg=utils.blend(c.clr.gray, c.grp.bg, 0.2)
+      fg=c.gray, bg=utils.blend(c.gray, c.bg, 0.2)
     },
     DiagnosticVirtualTextHint = {
-      fg=c.clr.lightorange, bg=utils.blend(c.clr.lightorange, c.grp.bg, 0.1)
+      fg=c.lightorange, bg=utils.blend(c.lightorange, c.bg, 0.1)
     },
 
-    DiagnosticUnderLineError = { sp=c.clr.red, underline=true },
-    DiagnosticUnderLineWarn = { sp=c.clr.lightyellow, underline=true },
-    DiagnosticUnderLineInfo = { sp=c.clr.gray, underline=true },
-    DiagnosticUnderLineHint = { sp=c.clr.lightorange, underline=true },
+    DiagnosticUnderLineError = { sp=c.red, underline=true },
+    DiagnosticUnderLineWarn = { sp=c.lightyellow, underline=true },
+    DiagnosticUnderLineInfo = { sp=c.gray, underline=true },
+    DiagnosticUnderLineHint = { sp=c.lightorange, underline=true },
 
-    LspReferenceText = { bg=c.grp.surface },
-    LspReferenceRead = { bg=c.grp.surface },
-    LspReferenceWrite = { bg=c.grp.surface },
-    LspCodeLens       = { fg=c.grp.surfacefg },
-    LspCodeLensSeparator = { fg=c.grp.nontext },
+    LspReferenceText = { bg=c.surface },
+    LspReferenceRead = { bg=c.surface },
+    LspReferenceWrite = { bg=c.surface },
+    LspCodeLens       = { fg=c.surfacefg },
+    LspCodeLensSeparator = { fg=c.nontext },
     LspSignatureActiveParameter = { italic=true },
 
     --- PLUGINS
-    VCSAdd = { fg=c.clr.green },
-    VCSChange = { fg=c.clr.yellow },
-    VCSDelete = { fg=c.clr.red },
+    VCSAdd = { fg=c.green },
+    VCSChange = { fg=c.yellow },
+    VCSDelete = { fg=c.red },
 
     -- Refer to telescope.vim for the groups. Dunno if they are complete.
-    TelescopeMatching = { fg=c.clr.pink },
-    TelescopePromptPrefix = { fg=c.clr.yellow },
-    TelescopeSelectionCaret = {  fg=c.clr.yellow, bg=c.grp.selection },
+    TelescopeMatching = { fg=c.pink },
+    TelescopePromptPrefix = { fg=c.yellow },
+    TelescopeSelectionCaret = {  fg=c.yellow, bg=c.selection },
 
     -- help syntax links it to an identifier for some godforsaken reason
     helpHyperTextJump = { link="Tag" },

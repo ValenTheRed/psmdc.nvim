@@ -4,8 +4,7 @@ local hsl = require("psmdc.hsluv").hsluv_to_hex
 
 local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
-M.dark = {}
-M.dark.clr = {
+M.dark = {
   black_white  = hsluv {0, 0, 100},
   white  = hsluv {0, 0, 100},
   black  = hsluv {0, 0, 0},
@@ -27,8 +26,7 @@ M.dark.clr = {
   lightpink   = hsluv {337, 82, 64},
   lightblue   = hsluv {259, 100, 70},
   lightyellow = hsluv {52, 100, 82},
-}
-M.dark.grp = {
+
   bg               = hsluv {305, 100, .70},
   fg               = hsluv {256, 0, 75},
   comments         = hsluv {256, 0, 60},
@@ -41,8 +39,7 @@ M.dark.grp = {
   surfacefg_darker = hsluv {256, 0, 70},
 }
 
-M.light = {}
-M.light.clr = {
+M.light = {
   black_white  = hsluv {0, 0, 0},
   white  = hsluv {0, 0, 100},
   black  = hsluv {0, 0, 0},
@@ -64,8 +61,7 @@ M.light.clr = {
   lightpink   = hsluv {337, 82, 64},
   lightblue   = hsluv {259, 100, 70},
   lightyellow = hsluv {52, 100, 75},
-}
-M.light.grp = {
+
   bg               = hsluv {305, 55, 95},
   fg               = hsluv {256, 0, 25},
   comments         = hsluv {256, 0, 60},
