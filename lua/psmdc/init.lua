@@ -159,18 +159,18 @@ local function set_groups(c)
 
     ["@storageclass"]    = { link="StorageClass" }, -- modifiers that affect storage in memory or life-time
     ["@attribute"]       =  { fg=c.clr.brown, bold=true }, -- attribute annotations (e.g. Python decorators, c++ [[deprecated("because")]])
-    ["@field"]           = { fg=c.grp.fg }, -- object and struct fields
-    ["@property"]        = { fg=c.grp.fg }, -- similar to `@field`
+    ["@field"]           = { link="Identifier" }, -- object and struct fields
+    ["@property"]        = { link="Identifier" }, -- similar to `@field`
 
     --- Identifiers
-    ["@variable"]         = { link="Variable" }, -- various variable names
+    ["@variable"]         = { link="Identifier" }, -- various variable names
     ["@variable.builtin"] = { fg=c.clr.lightpurple }, -- built-in variable names (e.g. `this`)
 
     ["@constant"]         = { link="Constant" }, -- constant identifiers
     ["@constant.builtin"] = { link="Constant" }, -- built-in constant values
     ["@constant.macro"]   = { link="Define" }, -- constants defined by the preprocessor
 
-    ["@namespace"]        = { fg=c.grp.fg }, -- modules or namespaces
+    ["@namespace"]        = { link="Identifier" }, -- modules or namespaces
     ["@symbol"]           = { link="Identifier" }, -- symbols or atoms
 
     --- Text: manily for markup languages
