@@ -49,37 +49,49 @@ local function set_groups(c)
     WarningMsg       = { fg=c.clr.red },
     WildMenu         = { fg=c.grp.bg, bg=c.clr.cyan },
 
-    -- Syntax
+    -- Syntax :h group-name
     Comment    = { fg=c.grp.comments },
     Conceal    = { fg=c.clr.brown, bg=c.grp.bg },
+
     Constant   = { fg=c.clr.orange },
+    Number   = { fg=c.clr.orange },
+    Float   = { fg=c.clr.orange },
+    Boolean   = { fg=c.clr.orange },
     String     = { fg=c.clr.green },
     Character  = { link="String" },
-    Identifier = { fg=c.clr.fg },
+
+    Identifier = { fg=c.grp.fg },
     Function   = { fg=c.clr.purple },
 
     Statement   = { fg=c.clr.blue },
     Conditional = { fg=c.clr.blue, italic=true },
     Repeat      = { fg=c.clr.blue, italic=true },
-    Exception   = { fg=c.clr.blue, italic=true },
     Label       = { fg=c.clr.fg, italic=true },
-
     Operator     = { fg=c.clr.lightpink },
+    Keyword   = { fg=c.clr.blue },
+    Exception   = { fg=c.clr.blue, italic=true },
+
     PreProc      = { fg=c.clr.blue, italic=true },
     Include      = { fg=c.clr.blue, italic=true },
-    PreCondit    = { link="Statement" },
     Define       = { fg=c.clr.pink },
     Macro        = { link="Define" },
+    PreCondit    = { link="Statement" },
+
     Type         = { fg=c.clr.yellow },
     StorageClass = { link="Statement" },
     Structure    = { link="Statement" },
     Typedef      = { link="Statement" },
+
     Special      = { fg=c.clr.violet },
+    SpecialChar      = { fg=c.clr.violet },
+    Tag = { link="Underlined" },
+    Delimiter    = { fg=c.clr.cyan },
+    SpecialComment = { link="Todo" },
     Debug        = { link="Special" },
+
     Underlined   = { underline=true },
     Error        = { fg=c.grp.bg, bg=c.clr.red },
     Todo         = { fg=c.clr.orange, italic=true, reverse=true },
-    Delimiter    = { fg=c.clr.cyan },
 
     -- Treesitter capture groups
     -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
@@ -234,10 +246,6 @@ local function set_groups(c)
 
     -- help syntax links it to an identifier for some godforsaken reason
     helpHyperTextJump = { link="Tag" },
-
-    SpecialComment = { link="Todo" },
-    Tag = { link="Underlined" },
-    SpecialChar    = { link="Special" },
 
     gitcommitsummary = { link="Identifier" },
     gitcommitHeader = { link="Statement" },
