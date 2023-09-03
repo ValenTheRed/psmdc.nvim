@@ -29,6 +29,7 @@ M.dark = {
 
   bg               = hsluv {305, 100, .70},
   fg               = hsluv {256, 0, 75},
+  border           = hsluv {0, 0, 82},
   comments         = hsluv {256, 0, 60},
   nontext          = hsluv {256, 0, 30},
   selection        = hsluv {285, 28, 12},
