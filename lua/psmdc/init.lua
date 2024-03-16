@@ -40,7 +40,7 @@ local function set_groups(c)
 		Search = { fg = c.white, bg = c.gray },
 		CurSearch = { link = "Search" },
 		IncSearch = { link = "Search" },
-		SignColumn = { fg = c.fg, bg = c.bg },
+		SignColumn = { link = "Normal" },
 		SpecialKey = { fg = c.comments },
 		SpellCap = { fg = c.purple, undercurl = true },
 		SpellBad = { fg = c.red, undercurl = true },
