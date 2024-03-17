@@ -29,7 +29,7 @@ psmdc.replace = {
 }
 
 psmdc.inactive = {
-	a = "Pmenu",
+	a = { bg = c.surface_lighter },
 	b = "Normal",
 	c = "Normal",
 }

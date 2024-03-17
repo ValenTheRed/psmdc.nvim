@@ -34,6 +34,7 @@ M.dark = {
 	nontext = hsluv { 256, 0, 30 },
 	selection = hsluv { 285, 28, 12 },
 	cursor_line = hsluv { 305, 55, 3 },
+	surface_lighter = hsluv { 305, 55, 18 },
 	surface = hsluv { 305, 55, 10 },
 	surfacefg = hsluv { 256, 0, 78 },
 	surface_darker = hsluv { 305, 55, 4.5 },
