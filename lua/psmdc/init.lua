@@ -53,6 +53,7 @@ local function set_groups(c)
 		Visual = { fg = c.fg, bg = c.selection },
 		WarningMsg = { fg = c.red },
 		WildMenu = { fg = c.bg, bg = c.cyan },
+		NormalFloat = { link = "Pmenu" },
 
 		-- Syntax :h group-name
 		Comment = { fg = c.comments },
