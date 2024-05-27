@@ -116,97 +116,97 @@ local function set_groups(c)
 		["@punctuation.special"] = { link = "Delimiter" }, -- special symbols (e.g. `{}` in string interpolation)
 
 		--- Literals
-		["@string"] = { link = "String" }, -- string literals
+		["@string"] = { link = "String" },         -- string literals
 		["@string.documentation"] = { link = "String" }, -- string documenting code (e.g. Python docstrings)
-		["@string.regex"] = { link = "String" }, -- regular expressions
+		["@string.regex"] = { link = "String" },   -- regular expressions
 		["@string.escape"] = { link = "Special" }, -- escape sequences
 		["@string.special"] = { link = "String" }, -- other special strings (e.g. dates)
 
-		["@character"] = { link = "Character" }, -- character literals
+		["@character"] = { link = "Character" },   -- character literals
 		["@character.special"] = { link = "Character" }, -- special characters (e.g. wildcards)
 
-		["@boolean"] = { link = "Boolean" }, -- boolean literals
-		["@number"] = { link = "Number" }, -- numeric literals
-		["@float"] = { link = "Float" }, -- floating-point number literals
+		["@boolean"] = { link = "Boolean" },       -- boolean literals
+		["@number"] = { link = "Number" },         -- numeric literals
+		["@float"] = { link = "Float" },           -- floating-point number literals
 
 		--- Functions
-		["@function"] = { link = "Function" }, -- function definitions
+		["@function"] = { link = "Function" },   -- function definitions
 		["@function.builtin"] = { link = "Function" }, -- built-in functions
 		["@function.call"] = { link = "Function" }, -- function calls
 		["@function.macro"] = { link = "Macro" }, -- preprocessor macros
 
-		["@method"] = { link = "Function" }, -- method definitions
+		["@method"] = { link = "Function" },     -- method definitions
 		["@method.call"] = { link = "Function" }, -- method calls
 
-		["@constructor"] = { link = "Type" }, -- constructor calls and definitions
+		["@constructor"] = { link = "Type" },    -- constructor calls and definitions
 		["@parameter"] = { fg = c.fg, bold = true }, -- parameters of a function
 
 		--- Keywords
-		["@keyword"] = { link = "Keyword" }, -- various keywords
-		["@keyword.coroutine"] = { link = "Keyword" }, -- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-		["@keyword.function"] = { link = "Keyword" }, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
+		["@keyword"] = { link = "Keyword" },                   -- various keywords
+		["@keyword.coroutine"] = { link = "Keyword" },         -- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
+		["@keyword.function"] = { link = "Keyword" },          -- keywords that define a function (e.g. `func` in Go, `def` in Python)
 		["@keyword.operator"] = { fg = c.lightpink, italic = true }, -- operators that are English words (e.g. `and` / `or`)
-		["@keyword.return"] = { fg = c.blue, italic = true }, -- keywords like `return` and `yield`
+		["@keyword.return"] = { fg = c.blue, italic = true },  -- keywords like `return` and `yield`
 
-		["@conditional"] = { link = "Conditional" }, -- keywords related to conditionals (e.g. `if` / `else`)
-		["@conditional.ternary"] = { link = "Conditional" }, -- ternary operator (e.g. `?` / `:`)
+		["@conditional"] = { link = "Conditional" },           -- keywords related to conditionals (e.g. `if` / `else`)
+		["@conditional.ternary"] = { link = "Conditional" },   -- ternary operator (e.g. `?` / `:`)
 
-		["@repeat"] = { link = "Repeat" }, -- keywords related to loops (e.g. `for` / `while`)
-		["@debug"] = { link = "Debug" }, -- keywords related to debugging
-		["@label"] = { link = "Label" }, -- GOTO and other labels (e.g. `label:` in C)
-		["@include"] = { link = "Include" }, -- keywords for including modules (e.g. `import` / `from` in Python)
-		["@exception"] = { link = "Exception" }, -- keywords related to exceptions (e.g. `throw` / `catch`)
+		["@repeat"] = { link = "Repeat" },                     -- keywords related to loops (e.g. `for` / `while`)
+		["@debug"] = { link = "Debug" },                       -- keywords related to debugging
+		["@label"] = { link = "Label" },                       -- GOTO and other labels (e.g. `label:` in C)
+		["@include"] = { link = "Include" },                   -- keywords for including modules (e.g. `import` / `from` in Python)
+		["@exception"] = { link = "Exception" },               -- keywords related to exceptions (e.g. `throw` / `catch`)
 
 		--- Types
-		["@type"] = { link = "Type" }, -- type or class definitions and annotations
-		["@type.builtin"] = { link = "Type" }, -- built-in types
+		["@type"] = { link = "Type" },            -- type or class definitions and annotations
+		["@type.builtin"] = { link = "Type" },    -- built-in types
 		["@type.definition"] = { link = "Type" }, -- type definitions (e.g. typedef struct{...} name; name gets highlighted)
 		["@type.qualifier"] = { link = "Keyword" }, -- type qualifiers (e.g. `const`)
 
 		["@storageclass"] = { link = "StorageClass" }, -- modifiers that affect storage in memory or life-time
 		["@attribute"] = { fg = c.brown, bold = true }, -- attribute annotations (e.g. Python decorators, c++ [[deprecated("because")]])
-		["@field"] = { link = "Identifier" }, -- object and struct fields
-		["@property"] = { link = "Identifier" }, -- similar to `@field`
+		["@field"] = { link = "Identifier" },     -- object and struct fields
+		["@property"] = { link = "Identifier" },  -- similar to `@field`
 
 		--- Identifiers
-		["@variable"] = { link = "Identifier" }, -- various variable names
+		["@variable"] = { link = "Identifier" },  -- various variable names
 		["@variable.builtin"] = { fg = c.lightpurple }, -- built-in variable names (e.g. `this`)
 
-		["@constant"] = { link = "Constant" }, -- constant identifiers
+		["@constant"] = { link = "Constant" },    -- constant identifiers
 		["@constant.builtin"] = { link = "Constant" }, -- built-in constant values
 		["@constant.macro"] = { link = "Define" }, -- constants defined by the preprocessor
 
 		["@namespace"] = { link = "Identifier" }, -- modules or namespaces
-		["@symbol"] = { link = "Identifier" }, -- symbols or atoms
+		["@symbol"] = { link = "Identifier" },    -- symbols or atoms
 
 		--- Text: manily for markup languages
-		["@text"] = { fg = c.fg }, -- non-structured text
-		["@text.strong"] = { bold = true }, -- bold text
-		["@text.emphasis"] = { italic = true }, -- text with emphasis
-		["@text.underline"] = { link = "Underlined" }, -- underlined text
-		["@text.strike"] = { strikethrough = true }, -- strikethrough text
-		["@text.title"] = { link = "Statement" }, -- text that is part of a title
-		["@text.quote"] = { link = "String" }, -- text quotations
-		["@text.uri"] = { link = "Underlined" }, -- URIs (e.g. hyperlinks)
-		["@text.math"] = { link = "Special" }, -- math environments (e.g. `$ ... $` in LaTeX)
-		["@text.environment"] = { link = "@text" }, -- text environments of markup languages
-		["@text.environment.name"] = { link = "Type" }, -- text indicating the type of an environment
-		["@text.reference"] = { sp = c.brown, underline = true }, -- text references, footnotes, citations, etc.
+		["@text"] = { fg = c.fg },                                      -- non-structured text
+		["@text.strong"] = { bold = true },                             -- bold text
+		["@text.emphasis"] = { italic = true },                         -- text with emphasis
+		["@text.underline"] = { link = "Underlined" },                  -- underlined text
+		["@text.strike"] = { strikethrough = true },                    -- strikethrough text
+		["@text.title"] = { link = "Statement" },                       -- text that is part of a title
+		["@text.quote"] = { link = "String" },                          -- text quotations
+		["@text.uri"] = { link = "Underlined" },                        -- URIs (e.g. hyperlinks)
+		["@text.math"] = { link = "Special" },                          -- math environments (e.g. `$ ... $` in LaTeX)
+		["@text.environment"] = { link = "@text" },                     -- text environments of markup languages
+		["@text.environment.name"] = { link = "Type" },                 -- text indicating the type of an environment
+		["@text.reference"] = { sp = c.brown, underline = true },       -- text references, footnotes, citations, etc.
 
-		["@text.literal"] = { fg = c.lightyellow }, -- literal or verbatim text (e.g., inline code)
-		["@text.literal.block"] = { link = "@text" }, -- literal or verbatim text as a stand-alone block (use priority 90 for blocks with injections)
+		["@text.literal"] = { fg = c.lightyellow },                     -- literal or verbatim text (e.g., inline code)
+		["@text.literal.block"] = { link = "@text" },                   -- literal or verbatim text as a stand-alone block (use priority 90 for blocks with injections)
 
-		["@text.todo"] = { link = "Todo" }, -- todo notes
-		["@text.note"] = { fg = c.fg, italic = true, reverse = true }, -- info notes
+		["@text.todo"] = { link = "Todo" },                             -- todo notes
+		["@text.note"] = { fg = c.fg, italic = true, reverse = true },  -- info notes
 		["@text.warning"] = { fg = c.yellow, italic = true, reverse = true }, -- warning notes
 		["@text.danger"] = { fg = c.red, italic = true, reverse = true }, -- danger/error notes
 
-		["@text.diff.add"] = { link = "diffRemoved" }, -- added text (for diff files)
-		["@text.diff.delete"] = { link = "diffAdded" }, -- deleted text (for diff files)
+		["@text.diff.add"] = { link = "diffRemoved" },                  -- added text (for diff files)
+		["@text.diff.delete"] = { link = "diffAdded" },                 -- deleted text (for diff files)
 
 		--- Tags: used for XML-like tags
-		["@tag"] = { link = "Keyword" }, -- XML tag names
-		["@tag.attribute"] = { link = "@parameter" }, -- XML tag attributes
+		["@tag"] = { link = "Keyword" },                    -- XML tag names
+		["@tag.attribute"] = { link = "@parameter" },       -- XML tag attributes
 		["@tag.delimiter"] = { link = "@punctuation.delimiter" }, -- XML tag delimiters
 
 		-- LSP semantic tokens (type)
