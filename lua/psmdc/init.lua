@@ -16,8 +16,7 @@ local function set_groups(c)
 		DiffText = { fg = c.yellow, bg = utils.blend(c.yellow, c.bg, 0.42) },
 		ErrorMsg = { fg = c.bg, bg = c.red, bold = true },
 		Folded = {
-			fg = c.lightorange,
-			bg = utils.blend(c.lightorange, c.bg, 0.1),
+			bg = utils.blend(c.cyan, c.bg, 0.15),
 			bold = true,
 		},
 		LineNr = { fg = c.comments },
