@@ -12,7 +12,7 @@ local function set_groups(c)
 		Directory = { fg = c.purple },
 		DiffAdd = { fg = c.green2, bg = utils.blend(c.green, c.bg, 0.25) },
 		DiffDelete = { fg = c.red, bg = utils.blend(c.red, c.bg, 0.1) },
-		DiffChange = { fg = c.yellow, bg = utils.blend(c.yellow, c.bg, 0.1) },
+		DiffChange = { bg = utils.blend(c.yellow, c.bg, 0.15) },
 		DiffText = { fg = c.yellow, bg = utils.blend(c.yellow, c.bg, 0.42) },
 		ErrorMsg = { fg = c.bg, bg = c.red, bold = true },
 		Folded = {
