@@ -12,7 +12,7 @@ local function set_groups(c)
 		Directory = { fg = c.purple },
 		DiffAdd = { fg = c.green2, bg = utils.blend(c.green, c.bg, 0.25) },
 		DiffDelete = { fg = c.red, bg = utils.blend(c.red, c.bg, 0.1) },
-		DiffChange = { fg = c.yellow, bg = utils.blend(c.yellow, c.bg, 0.2) },
+		DiffChange = { fg = c.yellow, bg = utils.blend(c.yellow, c.bg, 0.1) },
 		DiffText = { fg = c.yellow, bg = utils.blend(c.yellow, c.bg, 0.42) },
 		ErrorMsg = { fg = c.bg, bg = c.red, bold = true },
 		Folded = {
@@ -153,7 +153,7 @@ local function set_groups(c)
 		["@markup.heading.6"] = { link = "String" },
 		["@markup.italic"] = { italic = true },
 		["@markup.link"] = { sp = c.brown, underline = true },
-		["@markup.link.label"] = { link = "Underlined" },
+		["@markup.link.label"] = { link = "@markup.link" },
 		["@markup.link.url"] = { link = "@markup.link" },
 		["@markup.list"] = { link = "Delimiter" },
 		["@markup.list.checked"] = { link = "Todo" },
