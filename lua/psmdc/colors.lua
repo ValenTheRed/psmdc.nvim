@@ -1,7 +1,4 @@
 local M = {}
-local utils = require("psmdc.utils")
-local hsl = require("psmdc.hsluv").hsluv_to_hex
-
 local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
 M.dark = {
@@ -31,6 +28,7 @@ M.dark = {
 	fg = hsluv { 256, 0, 75 },
 	border = hsluv { 0, 0, 82 },
 	comments = hsluv { 256, 0, 60 },
+	comment_doc = hsluv { 52, 15, 80 },
 	nontext = hsluv { 256, 0, 30 },
 	selection = hsluv { 285, 28, 12 },
 	cursor_line = hsluv { 305, 55, 3 },
@@ -67,6 +65,7 @@ M.light = {
 	bg = hsluv { 305, 55, 95 },
 	fg = hsluv { 256, 0, 25 },
 	comments = hsluv { 256, 0, 60 },
+	comment_doc = hsluv { 52, 15, 20 },
 	nontext = hsluv { 256, 0, 80 },
 	selection = hsluv { 285, 28, 82 },
 	cursor_line = hsluv { 305, 55, 92.5 },
