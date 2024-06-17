@@ -1,6 +1,9 @@
 local M = {}
 local utils = require("psmdc.utils")
 local colors = require("psmdc.colors")
+local config = {
+	transparent_bg = false
+}
 
 local function set_groups(c)
 	local groups = {
@@ -30,7 +33,7 @@ local function set_groups(c)
 		MoreMsg = { link = "ModeMsg" },
 		NonText = { fg = c.nontext },
 		Whitespace = { link = "NonText" },
-		Normal = { fg = c.fg, bg = c.bg },
+		Normal = { fg = c.fg, bg = config.transparent_bg and "NONE" or c.bg },
 		Pmenu = { fg = c.surfacefg, bg = c.surface },
 		PmenuSel = { fg = c.bg, bg = c.pink },
 		PmenuSbar = { bg = c.surface },
@@ -307,6 +310,13 @@ function M.colorscheme(name)
 	vim.o.termguicolors = true
 	vim.g.colors_name = "psmdc_" .. name
 	set_groups(colors[name])
+end
+
+function M.setup(opts)
+	if opts == nil then
+		return
+	end
+	config.transparent_bg = not not opts.transparent_bg
 end
 
 return M
