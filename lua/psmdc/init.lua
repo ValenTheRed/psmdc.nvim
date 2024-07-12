@@ -52,6 +52,7 @@ local function set_groups(c)
 		TabLine = { fg = c.surfacefg, bg = c.surface },
 		TabLineSel = { fg = c.bg, bg = c.lightpink },
 		Title = { fg = c.green },
+		FloatTitle = { fg = c.green, bg = c.surface },
 		WinSeparator = { fg = c.border },
 		Visual = { fg = c.fg, bg = c.selection },
 		WarningMsg = { fg = c.red },
