@@ -54,7 +54,7 @@ local function set_groups(c)
 		Title = { fg = c.green },
 		FloatTitle = { fg = c.green, bg = c.surface },
 		WinSeparator = { fg = c.border },
-		Visual = { fg = c.fg, bg = c.selection },
+		Visual = { fg = c.selectionfg, bg = c.selection },
 		WarningMsg = { fg = c.red },
 		WildMenu = { fg = c.bg, bg = c.cyan },
 		NormalFloat = { link = "Pmenu" },
