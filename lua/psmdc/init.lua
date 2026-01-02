@@ -229,6 +229,12 @@ local function set_groups(c)
 		["@lsp.type.regexp"] = { link = "String" },
 		["@lsp.type.string"] = { link = "String" },
 
+		-- :h lsp-highlight
+		LspInlayHint = {
+			fg = c.comments,
+			bg = utils.blend(c.nontext, c.bg, 0.4),
+		},
+
 		-- Diagnostics
 		DiagnosticError = { fg = c.red },
 		DiagnosticWarn = { fg = c.lightyellow },
