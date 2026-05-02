@@ -402,7 +402,7 @@ local function set_groups(c)
 		MatchParen = {
 			bold = true,
 			italic = true,
-			bg = utils.blend(c.black_white, c.bg, 0.4),
+			underdouble = true,
 		},
 		-- 'showmode' message (e.g., "-- INSERT --").
 		ModeMsg = { fg = c.purple },
