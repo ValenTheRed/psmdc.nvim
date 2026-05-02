@@ -324,6 +324,23 @@ function M.setup(opts)
 		return
 	end
 	config.transparent_bg = not not opts.transparent_bg
+
+	if not not opts.dev then
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			group = vim.api.nvim_create_augroup(
+				"reload_psmdc_dark",
+				{ clear = true }
+			),
+			pattern = "*",
+			callback = function()
+				vim.schedule(function()
+					vim.cmd("Lazy reload psmdc.nvim")
+					vim.cmd("hi clear")
+					vim.cmd("colorscheme psmdc_dark")
+				end)
+			end,
+		})
+	end
 end
 
 return M
