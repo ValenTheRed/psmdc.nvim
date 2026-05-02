@@ -1,6 +1,42 @@
 local M = {}
 local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
+--- @class psmdc.palette
+--- @field black_white string
+--- @field white string
+--- @field black string
+--- @field gray string
+--- @field yellow string
+--- @field orange string
+--- @field red string
+--- @field pink string
+--- @field purple string
+--- @field blue string
+--- @field cyan string
+--- @field green string
+--- @field green2 string
+--- @field violet string
+--- @field brown string
+--- @field lightorange string
+--- @field lightpink string
+--- @field lightblue string
+--- @field lightyellow string
+--- @field bg string
+--- @field fg string
+--- @field border string
+--- @field comments string
+--- @field comment_doc string
+--- @field nontext string
+--- @field selection string
+--- @field selectionfg string
+--- @field cursor_line string
+--- @field surface_lighter string
+--- @field surface string
+--- @field surfacefg string
+--- @field surface_darker string
+--- @field surfacefg_darker string
+
+--- @type psmdc.palette
 M.dark = {
 	black_white = hsluv { 0, 0, 100 },
 	white = hsluv { 0, 0, 100 },
