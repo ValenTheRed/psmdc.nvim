@@ -11,7 +11,7 @@ local function set_groups(c)
 	local treesitter = {
 		--- Identifiers
 		-- various variable names
-		["@variable"] = { link = "Identifier" },
+		["@variable"] = { fg = c.fg },
 		-- built-in variable names (e.g. `this`)
 		["@variable.builtin"] = { fg = c.lightpurple },
 		-- parameters of a function
@@ -19,132 +19,132 @@ local function set_groups(c)
 		-- special parameters (e.g. `_`, `it`)
 		["@variable.parameter.builtin"] = { link = "@variable.parameter" },
 		-- object and struct fields
-		["@variable.member"] = { link = "Identifier" },
+		["@variable.member"] = { link = "@variable" },
 
 		-- constant identifiers
-		["@constant"] = { link = "Constant" },
+		["@constant"] = { fg = c.orange },
 		-- built-in constant values
-		["@constant.builtin"] = { link = "Constant" },
+		["@constant.builtin"] = { link = "@constant" },
 		-- constants defined by the preprocessor
-		["@constant.macro"] = { link = "Define" },
+		["@constant.macro"] = { fg = c.pink },
 
 		-- modules or namespaces
-		["@module"] = { link = "Identifier" },
+		["@module"] = { link = "@variable" },
 		-- built-in modules or namespaces
-		["@module.builtin"] = { link = "Identifier" },
+		["@module.builtin"] = { link = "@variable" },
 		-- GOTO and other labels (e.g. `label:` in C), including heredoc labels
-		["@label"] = { link = "Label" },
+		["@label"] = { fg = c.fg, italic = true },
 
 		--- Literals
 		-- string literals
-		["@string"] = { link = "String" },
+		["@string"] = { fg = c.green },
 		-- string documenting code (e.g. Python docstrings)
-		["@string.documentation"] = { link = "String" },
+		["@string.documentation"] = { link = "@string" },
 		-- regular expressions
-		["@string.regexp"] = { link = "String" },
+		["@string.regexp"] = { link = "@string" },
 		-- escape sequences
-		["@string.escape"] = { link = "Special" },
+		["@string.escape"] = { fg = c.violet },
 		-- other special strings (e.g. dates)
-		["@string.special"] = { link = "String" },
+		["@string.special"] = { link = "@string" },
 		-- symbols or atoms
-		["@string.special.symbol"] = { link = "Identifier" },
+		["@string.special.symbol"] = { link = "@variable" },
 		-- URIs (e.g. hyperlinks)
-		["@string.special.url"] = { link = "Identifier" },
+		["@string.special.url"] = { link = "@variable" },
 		-- filenames
 		["@string.special.path"] = { sp = c.brown, underline = true },
 
 		-- character literals
-		["@character"] = { link = "Character" },
+		["@character"] = { link = "@string" },
 		-- special characters (e.g. wildcards)
-		["@character.special"] = { link = "Character" },
+		["@character.special"] = { link = "@character" },
 
 		-- boolean literals
-		["@boolean"] = { link = "Boolean" },
+		["@boolean"] = { link = "@constant" },
 		-- numeric literals
-		["@number"] = { link = "Number" },
+		["@number"] = { link = "@constant" },
 		-- floating-point number literals
-		["@number.float"] = { link = "Float" },
+		["@number.float"] = { link = "@constant" },
 
 		--- Types
 		-- type or class definitions and annotations
-		["@type"] = { link = "Type" },
+		["@type"] = { fg = c.yellow },
 		-- built-in types
-		["@type.builtin"] = { link = "Type" },
+		["@type.builtin"] = { link = "@type" },
 		-- identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
-		["@type.definition"] = { link = "Type" },
+		["@type.definition"] = { link = "@type" },
 
 		-- attribute annotations (e.g. Python decorators, Rust lifetimes)
 		["@attribute"] = { fg = c.brown, bold = true },
 		-- builtin annotations (e.g. `@property` in Python)
 		["@attribute.builtin"] = { link = "@attribute" },
 		-- the key in key/value pairs
-		["@property"] = { link = "Identifier" },
+		["@property"] = { link = "@variable" },
 
 		--- Functions
 		-- function definitions
-		["@function"] = { link = "Function" },
+		["@function"] = { fg = c.purple },
 		-- built-in functions
-		["@function.builtin"] = { link = "Function" },
+		["@function.builtin"] = { link = "@function" },
 		-- function calls
-		["@function.call"] = { link = "Function" },
+		["@function.call"] = { link = "@function" },
 		-- preprocessor macros
-		["@function.macro"] = { link = "Macro" },
+		["@function.macro"] = { link = "@constant.macro" },
 
 		-- method definitions
-		["@function.method"] = { link = "Function" },
+		["@function.method"] = { link = "@function" },
 		-- method calls
-		["@function.method.call"] = { link = "Function" },
+		["@function.method.call"] = { link = "@function" },
 
 		-- constructor calls and definitions
-		["@constructor"] = { link = "Type" },
+		["@constructor"] = { link = "@type" },
 		-- symbolic operators (e.g. `+` / `*`)
-		["@operator"] = { link = "Operator" },
+		["@operator"] = { fg = c.lightpink },
 
 		--- Keywords
 		-- keywords not fitting into specific categories
-		["@keyword"] = { link = "Keyword" },
+		["@keyword"] = { fg = c.blue },
 		-- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-		["@keyword.coroutine"] = { link = "Keyword" },
+		["@keyword.coroutine"] = { link = "@keyword" },
 		-- keywords that define a function (e.g. `func` in Go, `def` in Python)
-		["@keyword.function"] = { link = "Keyword" },
+		["@keyword.function"] = { link = "@keyword" },
 		-- operators that are English words (e.g. `and` / `or`)
 		["@keyword.operator"] = { fg = c.lightpink, italic = true },
 		-- keywords for including or exporting modules (e.g. `import` / `from` in Python)
-		["@keyword.import"] = { link = "Include" },
+		["@keyword.import"] = { fg = c.blue, italic = true },
 		-- keywords describing namespaces and composite types (e.g. `struct`, `enum`)
-		["@keyword.type"] = { link = "Keyword" },
+		["@keyword.type"] = { link = "@keyword" },
 		-- keywords modifying other constructs (e.g. `const`, `static`, `public`)
-		["@keyword.modifier"] = { link = "Keyword" },
+		["@keyword.modifier"] = { link = "@keyword" },
 		-- keywords related to loops (e.g. `for` / `while`)
-		["@keyword.repeat"] = { link = "Repeat" },
+		["@keyword.repeat"] = { fg = c.blue, italic = true },
 		-- keywords like `return` and `yield`
-		["@keyword.return"] = { fg = c.blue, italic = true },
+		["@keyword.return"] = { link = "@keyword.repeat" },
 		-- keywords related to debugging
 		["@keyword.debug"] = { link = "Debug" },
 		-- keywords related to exceptions (e.g. `throw` / `catch`)
-		["@keyword.exception"] = { link = "Exception" },
+		["@keyword.exception"] = { link = "@keyword.repeat" },
 
 		-- keywords related to conditionals (e.g. `if` / `else`)
-		["@keyword.conditional"] = { link = "Conditional" },
+		["@keyword.conditional"] = { link = "@keyword.repeat" },
 		-- ternary operator (e.g. `?` / `:`)
-		["@keyword.conditional.ternary"] = { link = "Conditional" },
+		["@keyword.conditional.ternary"] = { link = "@keyword.conditional" },
 
 		-- various preprocessor directives & shebangs
-		["@keyword.directive"] = { link = "PreProc" },
+		["@keyword.directive"] = { fg = c.blue, italic = true },
 		-- preprocessor definition directives
-		["@keyword.directive.define"] = { link = "Define" },
+		["@keyword.directive.define"] = { link = "@constant.macro" },
 
 		--- Punctuation
 		-- delimiters (e.g. `;` / `.` / `,`)
-		["@punctuation.delimiter"] = { link = "Delimiter" },
+		["@punctuation.delimiter"] = { fg = c.cyan },
 		-- brackets (e.g. `()` / `{}` / `[]`)
-		["@punctuation.bracket"] = { link = "Delimiter" },
+		["@punctuation.bracket"] = { link = "@punctuation.delimiter" },
 		-- special symbols (e.g. `{}` in string interpolation)
-		["@punctuation.special"] = { link = "Delimiter" },
+		["@punctuation.special"] = { link = "@punctuation.delimiter" },
 
 		--- Comments
 		-- line and block comments
-		["@comment"] = { link = "Comment" },
+		["@comment"] = { fg = c.comments },
 		-- comments documenting code
 		["@comment.documentation"] = { fg = c.comment_doc },
 
@@ -153,7 +153,7 @@ local function set_groups(c)
 		-- warning-type comments (e.g. `WARNING`, `FIX`, `HACK`)
 		["@comment.warning"] = { fg = c.yellow, italic = true, reverse = true },
 		-- todo-type comments (e.g. `TODO`, `WIP`)
-		["@comment.todo"] = { link = "Todo" },
+		["@comment.todo"] = { fg = c.orange, italic = true, reverse = true },
 		-- note-type comments (e.g. `NOTE`, `INFO`, `XXX`)
 		["@comment.note"] = { fg = c.fg, italic = true, reverse = true },
 
@@ -168,24 +168,24 @@ local function set_groups(c)
 		["@markup.underline"] = { underline = true },
 
 		-- headings, titles (including markers)
-		["@markup.heading"] = { link = "String" },
+		["@markup.heading"] = { link = "@string" },
 		-- top-level heading
-		["@markup.heading.1"] = { link = "String" },
+		["@markup.heading.1"] = { link = "@string" },
 		-- section heading
-		["@markup.heading.2"] = { link = "String" },
+		["@markup.heading.2"] = { link = "@string" },
 		-- subsection heading
-		["@markup.heading.3"] = { link = "String" },
+		["@markup.heading.3"] = { link = "@string" },
 		-- and so on
-		["@markup.heading.4"] = { link = "String" },
+		["@markup.heading.4"] = { link = "@string" },
 		-- and so forth
-		["@markup.heading.5"] = { link = "String" },
+		["@markup.heading.5"] = { link = "@string" },
 		-- six levels ought to be enough for anybody
-		["@markup.heading.6"] = { link = "String" },
+		["@markup.heading.6"] = { link = "@string" },
 
 		-- block quotes
-		["@markup.quote"] = { link = "String" },
+		["@markup.quote"] = { link = "@string" },
 		-- math environments (e.g. `$ ... $` in LaTeX)
-		["@markup.math"] = { link = "String" },
+		["@markup.math"] = { link = "@string" },
 
 		-- text references, footnotes, citations, etc.
 		["@markup.link"] = { sp = c.brown, underline = true },
@@ -197,14 +197,14 @@ local function set_groups(c)
 		-- literal or verbatim text (e.g. inline code)
 		["@markup.raw"] = { fg = c.lightyellow },
 		-- literal or verbatim text as a stand-alone block; (use priority 90 for blocks with injections)
-		["@markup.raw.block"] = { link = "Identifier" },
+		["@markup.raw.block"] = { link = "@variable" },
 
 		-- list markers
-		["@markup.list"] = { link = "Delimiter" },
+		["@markup.list"] = { link = "@punctuation.delimiter" },
 		-- checked todo-style list markers
 		["@markup.list.checked"] = { link = "DiffAdd" },
 		-- unchecked todo-style list markers
-		["@markup.list.unchecked"] = { link = "Todo" },
+		["@markup.list.unchecked"] = { link = "@comment.todo" },
 
 		-- added text (for diff files)
 		["@diff.plus"] = { link = "DiffAdd" },
@@ -214,9 +214,9 @@ local function set_groups(c)
 		["@diff.delta"] = { link = "DiffChange" },
 
 		-- XML-style tag names (and similar)
-		["@tag"] = { link = "Keyword" },
+		["@tag"] = { link = "@keyword" },
 		-- builtin tag names (e.g. HTML5 tags)
-		["@tag.builtin"] = { link = "Keyword" },
+		["@tag.builtin"] = { link = "@keyword" },
 		-- XML-style tag attributes
 		["@tag.attribute"] = { link = "@parameter" },
 		-- XML-style tag delimiters
@@ -238,76 +238,76 @@ local function set_groups(c)
 	--- @type { [string]: vim.api.keyset.highlight }
 	local group_name = {
 		-- any comment
-		Comment = { fg = c.comments },
+		Comment = { link = "@comment" },
 
 		-- any constant
-		Constant = { fg = c.orange },
+		Constant = { link = "@constant" },
 		-- a string constant: "this is a string"
-		String = { fg = c.green },
+		String = { link = "@string" },
 		-- a character constant: 'c', '\n'
-		Character = { link = "String" },
+		Character = { link = "@character" },
 		-- a number constant: 234, 0xff
-		Number = { fg = c.orange },
+		Number = { link = "@number" },
 		-- a boolean constant: TRUE, false
-		Boolean = { fg = c.orange },
+		Boolean = { link = "@boolean" },
 		-- a floating point constant: 2.3e10
-		Float = { fg = c.orange },
+		Float = { link = "@float" },
 
 		-- any variable name
-		Identifier = { fg = c.fg },
+		Identifier = { link = "@variable" },
 		-- function name (also: methods for classes)
-		Function = { fg = c.purple },
+		Function = { link = "@function" },
 
 		-- any statement
-		Statement = { fg = c.blue },
+		Statement = { link = "@keyword" },
 		-- if, then, else, endif, switch, etc.
-		Conditional = { fg = c.blue, italic = true },
+		Conditional = { link = "@keyword.conditional" },
 		-- for, do, while, etc.
-		Repeat = { fg = c.blue, italic = true },
+		Repeat = { link = "@keyword.repeat" },
 		-- case, default, etc.
-		Label = { fg = c.fg, italic = true },
+		Label = { link = "@label" },
 		-- "sizeof", "+", "*", etc.
-		Operator = { fg = c.lightpink },
+		Operator = { link = "@operator" },
 		-- any other keyword
-		Keyword = { fg = c.blue },
+		Keyword = { link = "@keyword" },
 		-- try, catch, throw
-		Exception = { fg = c.blue, italic = true },
+		Exception = { link = "@keyword.exception" },
 
 		-- generic Preprocessor
-		PreProc = { fg = c.blue, italic = true },
+		PreProc = { link = "@keyword.directive" },
 		-- preprocessor #include
-		Include = { fg = c.blue, italic = true },
+		Include = { link = "@keyword.import" },
 		-- preprocessor #define
-		Define = { fg = c.pink },
+		Define = { link = "@constant.macro" },
 		-- same as Define
-		Macro = { link = "Define" },
+		Macro = { link = "@constant.macro" },
 		-- preprocessor #if, #else, #endif, etc.
-		PreCondit = { link = "Statement" },
+		PreCondit = { link = "@keyword" },
 
 		-- int, long, char, etc.
-		Type = { fg = c.yellow },
+		Type = { link = "@type" },
 		-- static, register, volatile, etc.
-		StorageClass = { link = "Statement" },
+		StorageClass = { link = "@keyword" },
 		-- struct, union, enum, etc.
-		Structure = { link = "Statement" },
+		Structure = { link = "@keyword" },
 		-- a typedef
-		Typedef = { link = "Statement" },
+		Typedef = { link = "@keyword" },
 
 		-- any special symbol
-		Special = { fg = c.violet },
+		Special = { link = "@string.escape" },
 		-- special character in a constant
-		SpecialChar = { fg = c.violet },
+		SpecialChar = { link = "@string.escape" },
 		-- you can use CTRL-] on this
-		Tag = { link = "Underlined" },
+		Tag = { link = "@markup.underline" },
 		-- character that needs attention
-		Delimiter = { fg = c.cyan },
+		Delimiter = { link = "@punctuation.delimiter" },
 		-- special things inside a comment
-		SpecialComment = { link = "Todo" },
+		SpecialComment = { link = "@comment.todo" },
 		-- debugging statements
-		Debug = { link = "Special" },
+		Debug = { link = "@string.escape" },
 
 		-- text that stands out, HTML links
-		Underlined = { underline = true },
+		Underlined = { link = "@markup.underline" },
 
 		-- left blank, hidden  |hl-Ignore|
 		Ignore = {},
@@ -316,7 +316,7 @@ local function set_groups(c)
 		Error = {},
 
 		-- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-		Todo = { fg = c.orange, italic = true, reverse = true },
+		Todo = { link = "@comment.todo" },
 
 		-- added line in a diff
 		Added = {},
@@ -520,51 +520,51 @@ local function set_groups(c)
 	--- @type { [string]: vim.api.keyset.highlight }
 	local lsp = {
 		-- Identifiers that declare or reference a class type
-		["@lsp.type.class"] = { link = "Type" },
+		["@lsp.type.class"] = { link = "@type" },
 		-- Tokens that represent a comment
-		["@lsp.type.comment"] = { link = "Comment" },
+		["@lsp.type.comment"] = { link = "@comment" },
 		-- Identifiers that declare or reference decorators and annotations
 		["@lsp.type.decorator"] = { link = "@tag.attribute" },
 		-- Identifiers that declare or reference an enumeration type
-		["@lsp.type.enum"] = { link = "Type" },
+		["@lsp.type.enum"] = { link = "@type" },
 		-- Identifiers that declare or reference an enumeration property, constant, or member
-		["@lsp.type.enumMember"] = { link = "Constant" },
+		["@lsp.type.enumMember"] = { link = "@constant" },
 		-- Identifiers that declare an event property
 		["@lsp.type.event"] = {},
 		-- Identifiers that declare a function
-		["@lsp.type.function"] = { link = "Function" },
+		["@lsp.type.function"] = { link = "@function" },
 		-- Identifiers that declare or reference an interface type
-		["@lsp.type.interface"] = { link = "Type" },
+		["@lsp.type.interface"] = { link = "@type" },
 		-- Tokens that represent a language keyword
-		["@lsp.type.keyword"] = { link = "Keyword" },
+		["@lsp.type.keyword"] = { link = "@keyword" },
 		-- Identifiers that declare a macro
-		["@lsp.type.macro"] = { link = "Macro" },
+		["@lsp.type.macro"] = { link = "@function.macro" },
 		-- Identifiers that declare a member function or method
-		["@lsp.type.method"] = { link = "Function" },
+		["@lsp.type.method"] = { link = "@function" },
 		-- Tokens that represent a modifier
 		["@lsp.type.modifier"] = {},
 		-- Identifiers that declare or reference a namespace, module, or package
 		["@lsp.type.namespace"] = { link = "@module" },
 		-- Tokens that represent a number literal
-		["@lsp.type.number"] = { link = "Number" },
+		["@lsp.type.number"] = { link = "@number" },
 		-- Tokens that represent an operator
-		["@lsp.type.operator"] = { link = "Operator" },
+		["@lsp.type.operator"] = { link = "@operator" },
 		-- Identifiers that declare or reference a function or method parameters
 		["@lsp.type.parameter"] = { link = "@variable.parameter" },
 		-- Identifiers that declare or reference a member property, member field, or member variable
 		["@lsp.type.property"] = { link = "@property" },
 		-- Tokens that represent a regular expression literal
-		["@lsp.type.regexp"] = { link = "String" },
+		["@lsp.type.regexp"] = { link = "@string" },
 		-- Tokens that represent a string literal
-		["@lsp.type.string"] = { link = "String" },
+		["@lsp.type.string"] = { link = "@string" },
 		-- Identifiers that declare or reference a struct type
-		["@lsp.type.struct"] = { link = "Type" },
+		["@lsp.type.struct"] = { link = "@type" },
 		-- Identifiers that declare or reference a type that is not covered above
-		["@lsp.type.type"] = { link = "Type" },
+		["@lsp.type.type"] = { link = "@type" },
 		-- Identifiers that declare or reference a type parameter
-		["@lsp.type.typeParameter"] = { link = "Type" },
+		["@lsp.type.typeParameter"] = { link = "@type" },
 		-- Identifiers that declare or reference a local or global variable
-		["@lsp.type.variable"] = { link = "Identifier" },
+		["@lsp.type.variable"] = { link = "@variable" },
 
 		-- Types and member functions that are abstract
 		["@lsp.mod.abstract"] = {},
@@ -681,7 +681,7 @@ local function set_groups(c)
 
 	--- @type { [string]: vim.api.keyset.highlight }
 	local plugins = {
-		gitcommitsummary = { link = "Identifier" },
+		gitcommitsummary = { link = "@variable" },
 		gitcommitHeader = { link = "Statement" },
 		gitcommitSelectedFile = { link = "VCSAdd" },
 		gitcommitDiscardedFile = { link = "VCSDelete" },
