@@ -26,7 +26,7 @@ local function set_groups(c)
 		-- built-in constant values
 		["@constant.builtin"] = { link = "@constant" },
 		-- constants defined by the preprocessor
-		["@constant.macro"] = { fg = c.pink },
+		["@constant.macro"] = { link = "@constant" },
 
 		-- modules or namespaces
 		["@module"] = { link = "@variable" },
@@ -88,7 +88,7 @@ local function set_groups(c)
 		-- function calls
 		["@function.call"] = { link = "@function" },
 		-- preprocessor macros
-		["@function.macro"] = { link = "@constant.macro" },
+		["@function.macro"] = { link = "@function" },
 
 		-- method definitions
 		["@function.method"] = { link = "@function" },
@@ -146,7 +146,7 @@ local function set_groups(c)
 		-- line and block comments
 		["@comment"] = { fg = c.comments },
 		-- comments documenting code
-		["@comment.documentation"] = { fg = c.comment_doc },
+		["@comment.documentation"] = { link = "@comment" },
 
 		-- error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED`)
 		["@comment.error"] = { fg = c.red, italic = true, reverse = true },
@@ -278,9 +278,9 @@ local function set_groups(c)
 		-- preprocessor #include
 		Include = { link = "@keyword.import" },
 		-- preprocessor #define
-		Define = { link = "@constant.macro" },
+		Define = { link = "@function.macro" },
 		-- same as Define
-		Macro = { link = "@constant.macro" },
+		Macro = { link = "@function.macro" },
 		-- preprocessor #if, #else, #endif, etc.
 		PreCondit = { link = "@keyword" },
 
@@ -372,7 +372,7 @@ local function set_groups(c)
 		-- Messages in stdout from shell commands.
 		StdoutMsg = {},
 		-- Separators between window splits.
-		WinSeparator = { fg = c.border },
+		WinSeparator = {},
 		-- Line used for closed folds.
 		Folded = {
 			bg = utils.blend(c.cyan, c.bg, 0.2),
