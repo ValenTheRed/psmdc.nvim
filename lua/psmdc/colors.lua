@@ -2,31 +2,27 @@ local M = {}
 local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
 --- @class psmdc.palette
---- @field black_white string
---- @field white string
---- @field black string
---- @field gray string
---- @field yellow string
---- @field orange string
---- @field red string
---- @field pink string
---- @field purple string
---- @field blue string
---- @field cyan string
---- @field green string
---- @field green2 string
---- @field violet string
---- @field brown string
---- @field lightorange string
---- @field lightpink string
---- @field lightblue string
---- @field lightyellow string
 --- @field bg string
 --- @field fg string
---- @field border string
+--- @field white string
+--- @field black string
+--- @field constant string
+--- @field keyword string
+--- @field str string
+--- @field str_esc string
+--- @field delimiter string
+--- @field func string
+--- @field type string
+--- @field error string
+--- @field non_text string
+--- @field search string
+--- @field menu_sel string
+--- @field diff_add string
+--- @field attr string
+--- @field diagnostic_hint string
+--- @field operator string
+--- @field raw_text string
 --- @field comments string
---- @field comment_doc string
---- @field nontext string
 --- @field selection string
 --- @field selectionfg string
 --- @field cursor_line string
@@ -38,34 +34,30 @@ local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
 --- @type psmdc.palette
 M.dark = {
-	black_white = hsluv { 0, 0, 100 },
-	white = hsluv { 0, 0, 100 },
-	black = hsluv { 0, 0, 0 },
-	gray = hsluv { 0, 0, 54 },
-	yellow = hsluv { 52, 100, 82 },
-	orange = hsluv { 20, 88, 64.5 },
-	red = hsluv { 7, 91.2, 54.1 },
-	pink = hsluv { 337, 82, 64 },
-	purple = hsluv { 288, 100, 72 },
-	blue = hsluv { 259, 100, 70 },
-	cyan = hsluv { 224, 99, 84 },
-	green = hsluv { 105, 59, 88 },
-
-	green2 = hsluv { 105, 59, 88 },
-	violet = hsluv { 314, 34, 61 },
-	brown = hsluv { 21.5, 76, 55.3 },
-
-	lightorange = hsluv { 14, 88, 64.5 },
-	lightpink = hsluv { 337, 82, 64 },
-	lightblue = hsluv { 259, 100, 70 },
-	lightyellow = hsluv { 52, 100, 82 },
-
 	bg = hsluv { 305, 100, 0.70 },
 	fg = hsluv { 256, 0, 75 },
-	border = hsluv { 0, 0, 82 },
+
+	white = hsluv { 0, 0, 100 },
+	black = hsluv { 0, 0, 0 },
+
+	constant = hsluv { 20, 88, 64.5 },
+	keyword = hsluv { 259, 100, 70 },
+	str = hsluv { 105, 59, 88 },
+	str_esc = hsluv { 314, 34, 61 },
+	delimiter = hsluv { 224, 99, 84 },
+	func = hsluv { 288, 100, 72 },
+	type = hsluv { 52, 100, 82 },
+	error = hsluv { 7, 91.2, 54.1 },
+	non_text = hsluv { 256, 0, 30 },
+	search = hsluv { 0, 0, 54 },
+	menu_sel = hsluv { 337, 82, 64 },
+	diff_add = hsluv { 105, 59, 88 },
+	attr = hsluv { 21.5, 76, 55.3 },
+	diagnostic_hint = hsluv { 14, 88, 64.5 },
+	operator = hsluv { 337, 82, 64 },
+	raw_text = hsluv { 52, 100, 82 },
+
 	comments = hsluv { 256, 0, 60 },
-	comment_doc = hsluv { 52, 15, 80 },
-	nontext = hsluv { 256, 0, 30 },
 	selection = hsluv { 285, 28, 22 },
 	selectionfg = hsluv { 256, 0, 85 },
 	cursor_line = hsluv { 305, 55, 3 },

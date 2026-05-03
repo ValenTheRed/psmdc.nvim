@@ -22,7 +22,7 @@ local function set_groups(c)
 		["@variable.member"] = { link = "@variable" },
 
 		-- constant identifiers
-		["@constant"] = { fg = c.orange },
+		["@constant"] = { fg = c.constant },
 		-- built-in constant values
 		["@constant.builtin"] = { link = "@constant" },
 		-- constants defined by the preprocessor
@@ -37,13 +37,13 @@ local function set_groups(c)
 
 		--- Literals
 		-- string literals
-		["@string"] = { fg = c.green },
+		["@string"] = { fg = c.str },
 		-- string documenting code (e.g. Python docstrings)
 		["@string.documentation"] = { link = "@string" },
 		-- regular expressions
 		["@string.regexp"] = { link = "@string" },
 		-- escape sequences
-		["@string.escape"] = { fg = c.violet },
+		["@string.escape"] = { fg = c.str_esc },
 		-- other special strings (e.g. dates)
 		["@string.special"] = { link = "@string" },
 		-- symbols or atoms
@@ -51,7 +51,7 @@ local function set_groups(c)
 		-- URIs (e.g. hyperlinks)
 		["@string.special.url"] = { link = "@variable" },
 		-- filenames
-		["@string.special.path"] = { sp = c.brown, underline = true },
+		["@string.special.path"] = { sp = c.attr, underline = true },
 
 		-- character literals
 		["@character"] = { link = "@string" },
@@ -67,14 +67,14 @@ local function set_groups(c)
 
 		--- Types
 		-- type or class definitions and annotations
-		["@type"] = { fg = c.yellow },
+		["@type"] = { fg = c.type },
 		-- built-in types
 		["@type.builtin"] = { link = "@type" },
 		-- identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
 		["@type.definition"] = { link = "@type" },
 
 		-- attribute annotations (e.g. Python decorators, Rust lifetimes)
-		["@attribute"] = { fg = c.brown, bold = true },
+		["@attribute"] = { fg = c.attr, bold = true },
 		-- builtin annotations (e.g. `@property` in Python)
 		["@attribute.builtin"] = { link = "@attribute" },
 		-- the key in key/value pairs
@@ -82,7 +82,7 @@ local function set_groups(c)
 
 		--- Functions
 		-- function definitions
-		["@function"] = { fg = c.purple },
+		["@function"] = { fg = c.func },
 		-- built-in functions
 		["@function.builtin"] = { link = "@function" },
 		-- function calls
@@ -98,25 +98,25 @@ local function set_groups(c)
 		-- constructor calls and definitions
 		["@constructor"] = { link = "@type" },
 		-- symbolic operators (e.g. `+` / `*`)
-		["@operator"] = { fg = c.lightpink },
+		["@operator"] = { fg = c.operator },
 
 		--- Keywords
 		-- keywords not fitting into specific categories
-		["@keyword"] = { fg = c.blue },
+		["@keyword"] = { fg = c.keyword },
 		-- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
 		["@keyword.coroutine"] = { link = "@keyword" },
 		-- keywords that define a function (e.g. `func` in Go, `def` in Python)
 		["@keyword.function"] = { link = "@keyword" },
 		-- operators that are English words (e.g. `and` / `or`)
-		["@keyword.operator"] = { fg = c.lightpink, italic = true },
+		["@keyword.operator"] = { fg = c.operator, italic = true },
 		-- keywords for including or exporting modules (e.g. `import` / `from` in Python)
-		["@keyword.import"] = { fg = c.blue, italic = true },
+		["@keyword.import"] = { fg = c.keyword, italic = true },
 		-- keywords describing namespaces and composite types (e.g. `struct`, `enum`)
 		["@keyword.type"] = { link = "@keyword" },
 		-- keywords modifying other constructs (e.g. `const`, `static`, `public`)
 		["@keyword.modifier"] = { link = "@keyword" },
 		-- keywords related to loops (e.g. `for` / `while`)
-		["@keyword.repeat"] = { fg = c.blue, italic = true },
+		["@keyword.repeat"] = { fg = c.keyword, italic = true },
 		-- keywords like `return` and `yield`
 		["@keyword.return"] = { link = "@keyword.repeat" },
 		-- keywords related to debugging
@@ -130,13 +130,13 @@ local function set_groups(c)
 		["@keyword.conditional.ternary"] = { link = "@keyword.conditional" },
 
 		-- various preprocessor directives & shebangs
-		["@keyword.directive"] = { fg = c.blue, italic = true },
+		["@keyword.directive"] = { fg = c.keyword, italic = true },
 		-- preprocessor definition directives
 		["@keyword.directive.define"] = { link = "@constant.macro" },
 
 		--- Punctuation
 		-- delimiters (e.g. `;` / `.` / `,`)
-		["@punctuation.delimiter"] = { fg = c.cyan },
+		["@punctuation.delimiter"] = { fg = c.delimiter },
 		-- brackets (e.g. `()` / `{}` / `[]`)
 		["@punctuation.bracket"] = { link = "@punctuation.delimiter" },
 		-- special symbols (e.g. `{}` in string interpolation)
@@ -149,11 +149,11 @@ local function set_groups(c)
 		["@comment.documentation"] = { link = "@comment" },
 
 		-- error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED`)
-		["@comment.error"] = { fg = c.red, italic = true, reverse = true },
+		["@comment.error"] = { fg = c.error, italic = true, reverse = true },
 		-- warning-type comments (e.g. `WARNING`, `FIX`, `HACK`)
-		["@comment.warning"] = { fg = c.yellow, italic = true, reverse = true },
+		["@comment.warning"] = { fg = c.type, italic = true, reverse = true },
 		-- todo-type comments (e.g. `TODO`, `WIP`)
-		["@comment.todo"] = { fg = c.orange, italic = true, reverse = true },
+		["@comment.todo"] = { fg = c.constant, italic = true, reverse = true },
 		-- note-type comments (e.g. `NOTE`, `INFO`, `XXX`)
 		["@comment.note"] = { fg = c.fg, italic = true, reverse = true },
 
@@ -188,14 +188,14 @@ local function set_groups(c)
 		["@markup.math"] = { link = "@string" },
 
 		-- text references, footnotes, citations, etc.
-		["@markup.link"] = { sp = c.brown, underline = true },
+		["@markup.link"] = { sp = c.attr, underline = true },
 		-- link, reference descriptions
 		["@markup.link.label"] = { link = "@markup.link" },
 		-- URL-style links
 		["@markup.link.url"] = { link = "@markup.link" },
 
 		-- literal or verbatim text (e.g. inline code)
-		["@markup.raw"] = { fg = c.lightyellow },
+		["@markup.raw"] = { fg = c.raw_text },
 		-- literal or verbatim text as a stand-alone block; (use priority 90 for blocks with injections)
 		["@markup.raw.block"] = { link = "@variable" },
 
@@ -332,7 +332,7 @@ local function set_groups(c)
 		-- Used for the columns set with 'colorcolumn'.
 		ColorColumn = { bg = c.surface },
 		-- Placeholder characters substituted for concealed text (see 'conceallevel').
-		Conceal = { fg = c.brown, bg = c.bg },
+		Conceal = { fg = c.attr, bg = c.bg },
 		-- Current match for the last search pattern (see 'hlsearch'). Note: This is correct after a search, but may get outdated if changes are made or the screen is redrawn.
 		CurSearch = { link = "Search" },
 		-- Character under the cursor.
@@ -346,15 +346,15 @@ local function set_groups(c)
 		-- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
 		CursorLine = { bg = c.cursor_line },
 		-- Directory names (and other special names in listings).
-		Directory = { fg = c.purple },
+		Directory = { fg = c.func },
 		-- Diff mode: Added line. |diff.txt|
-		DiffAdd = { fg = c.green2, bg = utils.blend(c.green, c.bg, 0.25) },
+		DiffAdd = { fg = c.diff_add, bg = utils.blend(c.str, c.bg, 0.25) },
 		-- Diff mode: Changed line. |diff.txt|
-		DiffChange = { bg = utils.blend(c.yellow, c.bg, 0.15) },
+		DiffChange = { bg = utils.blend(c.type, c.bg, 0.15) },
 		-- Diff mode: Deleted line. |diff.txt|
-		DiffDelete = { fg = c.red, bg = utils.blend(c.red, c.bg, 0.1) },
+		DiffDelete = { fg = c.error, bg = utils.blend(c.error, c.bg, 0.1) },
 		-- Diff mode: Changed text within a changed line. |diff.txt|
-		DiffText = { fg = c.yellow, bg = utils.blend(c.yellow, c.bg, 0.42) },
+		DiffText = { fg = c.type, bg = utils.blend(c.type, c.bg, 0.42) },
 		-- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
 		DiffTextAdd = {},
 		-- Filler lines (~) after the last line in the buffer. By default, this is highlighted like |hl-NonText|.
@@ -364,9 +364,9 @@ local function set_groups(c)
 		-- Success messages.
 		OkMsg = {},
 		-- Warning messages.
-		WarningMsg = { fg = c.red },
+		WarningMsg = { fg = c.error },
 		-- Error messages.
-		ErrorMsg = { fg = c.bg, bg = c.red, bold = true },
+		ErrorMsg = { fg = c.bg, bg = c.error, bold = true },
 		-- Messages in stderr from shell commands.
 		StderrMsg = {},
 		-- Messages in stdout from shell commands.
@@ -375,7 +375,7 @@ local function set_groups(c)
 		WinSeparator = {},
 		-- Line used for closed folds.
 		Folded = {
-			bg = utils.blend(c.cyan, c.bg, 0.2),
+			bg = utils.blend(c.delimiter, c.bg, 0.2),
 			bold = true,
 		},
 		-- 'foldcolumn'
@@ -405,7 +405,7 @@ local function set_groups(c)
 			underdouble = true,
 		},
 		-- 'showmode' message (e.g., "-- INSERT --").
-		ModeMsg = { fg = c.purple },
+		ModeMsg = { fg = c.func },
 		-- Area for messages and command-line, see also 'cmdheight'.
 		MsgArea = {},
 		-- Separator for scrolled messages |msgsep|.
@@ -413,7 +413,7 @@ local function set_groups(c)
 		-- |more-prompt|
 		MoreMsg = { link = "ModeMsg" },
 		-- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		NonText = { fg = c.nontext },
+		NonText = { fg = c.non_text },
 		-- Normal text.
 		Normal = { fg = c.fg, bg = config.transparent_bg and "NONE" or c.bg },
 		-- Normal text in floating windows.
@@ -425,7 +425,7 @@ local function set_groups(c)
 		-- Shadow corners when border is "shadow".
 		FloatShadowThrough = {},
 		-- Title of floating windows.
-		FloatTitle = { fg = c.green, bg = c.surface },
+		FloatTitle = { fg = c.str, bg = c.surface },
 		-- Footer of floating windows.
 		FloatFooter = {},
 		-- Normal text in non-current windows.
@@ -433,7 +433,7 @@ local function set_groups(c)
 		-- Popup menu: Normal item.
 		Pmenu = { fg = c.surfacefg, bg = c.surface },
 		-- Popup menu: Selected item. Combined with |hl-Pmenu|.
-		PmenuSel = { fg = c.bg, bg = c.pink },
+		PmenuSel = { fg = c.bg, bg = c.menu_sel },
 		-- Popup menu: Normal item "kind".
 		PmenuKind = {},
 		-- Popup menu: Selected item "kind".
@@ -465,11 +465,11 @@ local function set_groups(c)
 		-- The additional information of the virtual text.
 		ComplHintMore = {},
 		-- |hit-enter| prompt and yes/no questions.
-		Question = { fg = c.purple },
+		Question = { fg = c.func },
 		-- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		QuickFixLine = {},
 		-- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-		Search = { fg = c.white, bg = c.gray },
+		Search = { fg = c.white, bg = c.search },
 		-- Tabstops in snippets. |vim.snippet|
 		SnippetTabstop = {},
 		-- The currently active tabstop. |vim.snippet|
@@ -477,9 +477,9 @@ local function set_groups(c)
 		-- Unprintable characters: Text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
 		SpecialKey = { fg = c.comments },
 		-- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		SpellBad = { fg = c.red, undercurl = true },
+		SpellBad = { fg = c.error, undercurl = true },
 		-- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-		SpellCap = { fg = c.purple, undercurl = true },
+		SpellCap = { fg = c.func, undercurl = true },
 		-- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		SpellLocal = {},
 		-- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
@@ -497,9 +497,9 @@ local function set_groups(c)
 		-- Tab pages line, where there are no labels.
 		TabLineFill = { bg = c.bg },
 		-- Tab pages line, active tab page label.
-		TabLineSel = { fg = c.bg, bg = c.lightpink },
+		TabLineSel = { fg = c.bg, bg = c.operator },
 		-- Titles for output from ":set all", ":autocmd" etc.
-		Title = { fg = c.green },
+		Title = { fg = c.str },
 		-- Visual mode selection.
 		Visual = { fg = c.selectionfg, bg = c.selection },
 		-- Visual mode selection when vim is "Not Owning the Selection".
@@ -507,7 +507,7 @@ local function set_groups(c)
 		-- "nbsp", "space", "tab", "multispace", "lead" and "trail" in 'listchars'.
 		Whitespace = { link = "NonText" },
 		-- Current match in 'wildmenu' completion.
-		WildMenu = { fg = c.bg, bg = c.cyan },
+		WildMenu = { fg = c.bg, bg = c.delimiter },
 		-- Window bar of current window.
 		WinBar = {},
 		-- Window bar of not-current windows.
@@ -589,47 +589,47 @@ local function set_groups(c)
 
 		LspInlayHint = {
 			fg = c.comments,
-			bg = utils.blend(c.nontext, c.bg, 0.4),
+			bg = utils.blend(c.non_text, c.bg, 0.4),
 		},
 		LspReferenceText = { bg = c.surface },
 		LspReferenceRead = { bg = c.surface },
 		LspReferenceWrite = { bg = c.surface },
 		LspCodeLens = { fg = c.surfacefg },
-		LspCodeLensSeparator = { fg = c.nontext },
+		LspCodeLensSeparator = { fg = c.non_text },
 		LspSignatureActiveParameter = { italic = true },
 	}
 
 	--- @type { [string]: vim.api.keyset.highlight }
 	local diagnostics = {
 		-- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticError = { fg = c.red },
+		DiagnosticError = { fg = c.error },
 		-- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticWarn = { fg = c.lightyellow },
+		DiagnosticWarn = { fg = c.raw_text },
 		-- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticInfo = { fg = c.gray },
+		DiagnosticInfo = { fg = c.search },
 		-- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticHint = { fg = c.lightorange },
+		DiagnosticHint = { fg = c.diagnostic_hint },
 		-- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticOk = {},
 		-- Used for "Error" diagnostic virtual text.
 		DiagnosticVirtualTextError = {
-			fg = c.red,
-			bg = utils.blend(c.red, c.bg, 0.1),
+			fg = c.error,
+			bg = utils.blend(c.error, c.bg, 0.1),
 		},
 		-- Used for "Warn" diagnostic virtual text.
 		DiagnosticVirtualTextWarn = {
-			fg = c.lightyellow,
-			bg = utils.blend(c.lightyellow, c.bg, 0.1),
+			fg = c.raw_text,
+			bg = utils.blend(c.raw_text, c.bg, 0.1),
 		},
 		-- Used for "Info" diagnostic virtual text.
 		DiagnosticVirtualTextInfo = {
-			fg = c.gray,
-			bg = utils.blend(c.gray, c.bg, 0.2),
+			fg = c.search,
+			bg = utils.blend(c.search, c.bg, 0.2),
 		},
 		-- Used for "Hint" diagnostic virtual text.
 		DiagnosticVirtualTextHint = {
-			fg = c.lightorange,
-			bg = utils.blend(c.lightorange, c.bg, 0.1),
+			fg = c.diagnostic_hint,
+			bg = utils.blend(c.diagnostic_hint, c.bg, 0.1),
 		},
 		-- Used for "Ok" diagnostic virtual text.
 		DiagnosticVirtualTextOk = {},
@@ -686,12 +686,12 @@ local function set_groups(c)
 		gitcommitSelectedFile = { link = "VCSAdd" },
 		gitcommitDiscardedFile = { link = "VCSDelete" },
 		gitcommitUnmergedFile = { link = "VCSChange" },
-		GitSignsAdd = { fg = c.green },
-		GitSignsChange = { fg = c.yellow },
-		GitSignsDelete = { fg = c.red },
-		TelescopeMatching = { fg = c.pink },
-		TelescopePromptPrefix = { fg = c.yellow },
-		TelescopeSelectionCaret = { fg = c.yellow, bg = c.selection },
+		GitSignsAdd = { fg = c.str },
+		GitSignsChange = { fg = c.type },
+		GitSignsDelete = { fg = c.error },
+		TelescopeMatching = { fg = c.menu_sel },
+		TelescopePromptPrefix = { fg = c.type },
+		TelescopeSelectionCaret = { fg = c.type, bg = c.selection },
 	}
 
 	--- @type { [string]: vim.api.keyset.highlight }

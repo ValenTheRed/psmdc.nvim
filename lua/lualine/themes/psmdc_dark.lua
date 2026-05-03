@@ -3,29 +3,29 @@ local c = require("psmdc.colors").dark
 local psmdc = {}
 
 psmdc.normal = {
-	a = { fg = c.bg, bg = c.purple },
-	b = { fg = c.purple, bg = c.surface_darker },
+	a = { fg = c.bg, bg = c.func },
+	b = { fg = c.func, bg = c.surface_darker },
 	c = { fg = c.surfacefg, bg = c.surface },
 }
 
 psmdc.insert = {
-	a = { fg = c.bg, bg = c.pink },
-	b = { fg = c.pink, bg = c.surface_darker },
+	a = { fg = c.bg, bg = c.menu_sel },
+	b = { fg = c.menu_sel, bg = c.surface_darker },
 }
 
 psmdc.command = {
-	a = { fg = c.bg, bg = c.cyan },
-	b = { fg = c.cyan, bg = c.surface_darker },
+	a = { fg = c.bg, bg = c.delimiter },
+	b = { fg = c.delimiter, bg = c.surface_darker },
 }
 
 psmdc.visual = {
-	a = { fg = c.bg, bg = c.yellow },
-	b = { fg = c.yellow, bg = c.surface_darker },
+	a = { fg = c.bg, bg = c.type },
+	b = { fg = c.type, bg = c.surface_darker },
 }
 
 psmdc.replace = {
-	a = { fg = c.bg, bg = c.orange },
-	b = { fg = c.orange, bg = c.surface_darker },
+	a = { fg = c.bg, bg = c.constant },
+	b = { fg = c.constant, bg = c.surface_darker },
 }
 
 psmdc.inactive = {
