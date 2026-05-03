@@ -11,11 +11,11 @@ local function set_groups(c)
 	local treesitter = {
 		--- Identifiers
 		-- various variable names
-		["@variable"] = { fg = c.fg },
+		["@variable"] = { fg = "fg" },
 		-- built-in variable names (e.g. `this`)
-		["@variable.builtin"] = { fg = c.lightpurple },
+		["@variable.builtin"] = { fg = "fg" },
 		-- parameters of a function
-		["@variable.parameter"] = { fg = c.fg, bold = true },
+		["@variable.parameter"] = { fg = "fg", bold = true },
 		-- special parameters (e.g. `_`, `it`)
 		["@variable.parameter.builtin"] = { link = "@variable.parameter" },
 		-- object and struct fields
@@ -33,7 +33,7 @@ local function set_groups(c)
 		-- built-in modules or namespaces
 		["@module.builtin"] = { link = "@variable" },
 		-- GOTO and other labels (e.g. `label:` in C), including heredoc labels
-		["@label"] = { fg = c.fg, italic = true },
+		["@label"] = { fg = "fg", italic = true },
 
 		--- Literals
 		-- string literals
@@ -155,7 +155,7 @@ local function set_groups(c)
 		-- todo-type comments (e.g. `TODO`, `WIP`)
 		["@comment.todo"] = { fg = c.constant, italic = true, reverse = true },
 		-- note-type comments (e.g. `NOTE`, `INFO`, `XXX`)
-		["@comment.note"] = { fg = c.fg, italic = true, reverse = true },
+		["@comment.note"] = { fg = "fg", italic = true, reverse = true },
 
 		--- Markup
 		-- bold text
