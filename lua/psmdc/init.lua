@@ -695,10 +695,11 @@ local function set_groups(c)
 		TelescopePromptPrefix = { fg = c.type },
 		TelescopeSelectionCaret = { fg = c.type, bg = c.selection },
 
+		CmpItemMenu = { fg = c.fg_4 },
 		CmpItemAbbr = { link = "Normal" },
 		CmpItemAbbrDeprecated = { link = "DiagnosticDeprecated" },
-		CmpItemAbbrMatch = { link = "@keyword" },
-		CmpItemKindText = { link = "@function" },
+		CmpItemAbbrMatch = { link = "TelescopeMatching" },
+		CmpItemKindText = {},
 		CmpItemKindMethod = { link = "@lsp.type.method" },
 		CmpItemKindFunction = { link = "@lsp.type.function" },
 		CmpItemKindConstructor = { link = "@constructor" },
