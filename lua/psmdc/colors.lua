@@ -1,9 +1,22 @@
 local M = {}
 local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
+local white = {
+	"#FFFFFF",
+	"#F6F5F4",
+	"#DEDDDA",
+	"#C0BFBC",
+	"#9A9996",
+}
+
 --- @class psmdc.palette
 --- @field bg string
 --- @field fg string
+--- @field fg_1 string
+--- @field fg_2 string
+--- @field fg_3 string
+--- @field fg_4 string
+--- @field fg_5 string
 --- @field white string
 --- @field black string
 --- @field constant string
@@ -24,7 +37,6 @@ local hsluv = require("psmdc.hsluv").hsluv_to_hex
 --- @field raw_text string
 --- @field comments string
 --- @field selection string
---- @field selectionfg string
 --- @field cursor_line string
 --- @field surface_lighter string
 --- @field surface string
@@ -34,8 +46,14 @@ local hsluv = require("psmdc.hsluv").hsluv_to_hex
 
 --- @type psmdc.palette
 M.dark = {
-	bg = hsluv { 305, 100, 0.70 },
-	fg = hsluv { 256, 0, 75 },
+	bg = "#07070a",
+	fg = white[3],
+
+	fg_1 = white[1],
+	fg_2 = white[2],
+	fg_3 = white[3],
+	fg_4 = white[4],
+	fg_5 = white[5],
 
 	white = hsluv { 0, 0, 100 },
 	black = hsluv { 0, 0, 0 },
@@ -59,10 +77,9 @@ M.dark = {
 
 	comments = hsluv { 256, 0, 60 },
 	selection = hsluv { 285, 28, 22 },
-	selectionfg = hsluv { 256, 0, 85 },
 	cursor_line = hsluv { 305, 55, 3 },
-	surface_lighter = hsluv { 305, 55, 18 },
-	surface = hsluv { 305, 55, 10 },
+	surface_lighter  = hsluv { 265.9, 3.6, 23.9 },
+	surface = "#27272b",
 	surfacefg = hsluv { 256, 0, 78 },
 	surface_darker = hsluv { 305, 55, 4.5 },
 	surfacefg_darker = hsluv { 256, 0, 70 },

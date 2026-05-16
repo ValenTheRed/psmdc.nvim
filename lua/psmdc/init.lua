@@ -13,11 +13,11 @@ local function set_groups(c)
 		-- various variable names
 		["@variable"] = { fg = "fg" },
 		-- built-in variable names (e.g. `this`)
-		["@variable.builtin"] = { fg = "fg" },
+		["@variable.builtin"] = { fg = c.fg_4 },
 		-- parameters of a function
-		["@variable.parameter"] = { fg = "fg", bold = true },
+		["@variable.parameter"] = { link = "@variable" },
 		-- special parameters (e.g. `_`, `it`)
-		["@variable.parameter.builtin"] = { link = "@variable.parameter" },
+		["@variable.parameter.builtin"] = { link = "@variable.builtin" },
 		-- object and struct fields
 		["@variable.member"] = { link = "@variable" },
 
@@ -33,7 +33,7 @@ local function set_groups(c)
 		-- built-in modules or namespaces
 		["@module.builtin"] = { link = "@variable" },
 		-- GOTO and other labels (e.g. `label:` in C), including heredoc labels
-		["@label"] = { fg = "fg", italic = true },
+		["@label"] = { fg = "fg", underline = true },
 
 		--- Literals
 		-- string literals
@@ -116,23 +116,23 @@ local function set_groups(c)
 		-- keywords modifying other constructs (e.g. `const`, `static`, `public`)
 		["@keyword.modifier"] = { link = "@keyword" },
 		-- keywords related to loops (e.g. `for` / `while`)
-		["@keyword.repeat"] = { fg = c.keyword, italic = true },
+		["@keyword.repeat"] = { link = "@keyword.import" },
 		-- keywords like `return` and `yield`
-		["@keyword.return"] = { link = "@keyword.repeat" },
+		["@keyword.return"] = { link = "@keyword.import" },
 		-- keywords related to debugging
-		["@keyword.debug"] = { link = "Debug" },
+		["@keyword.debug"] = { link = "@keyword" },
 		-- keywords related to exceptions (e.g. `throw` / `catch`)
-		["@keyword.exception"] = { link = "@keyword.repeat" },
+		["@keyword.exception"] = { link = "@keyword" },
 
 		-- keywords related to conditionals (e.g. `if` / `else`)
-		["@keyword.conditional"] = { link = "@keyword.repeat" },
+		["@keyword.conditional"] = { link = "@keyword" },
 		-- ternary operator (e.g. `?` / `:`)
 		["@keyword.conditional.ternary"] = { link = "@keyword.conditional" },
 
 		-- various preprocessor directives & shebangs
-		["@keyword.directive"] = { fg = c.keyword, italic = true },
+		["@keyword.directive"] = { link = "@keyword.import" },
 		-- preprocessor definition directives
-		["@keyword.directive.define"] = { link = "@constant.macro" },
+		["@keyword.directive.define"] = { link = "@keyword.directive" },
 
 		--- Punctuation
 		-- delimiters (e.g. `;` / `.` / `,`)
@@ -144,9 +144,9 @@ local function set_groups(c)
 
 		--- Comments
 		-- line and block comments
-		["@comment"] = { fg = c.comments },
+		["@comment"] = { fg = c.fg_4 },
 		-- comments documenting code
-		["@comment.documentation"] = { link = "@comment" },
+		["@comment.documentation"] = { link = "Normal" },
 
 		-- error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED`)
 		["@comment.error"] = { fg = c.error, italic = true, reverse = true },
@@ -168,24 +168,24 @@ local function set_groups(c)
 		["@markup.underline"] = { underline = true },
 
 		-- headings, titles (including markers)
-		["@markup.heading"] = { link = "@string" },
+		["@markup.heading"] = { fg = c.keyword, bg = utils.blend(c.keyword, c.bg, 0.1) },
 		-- top-level heading
-		["@markup.heading.1"] = { link = "@string" },
+		["@markup.heading.1"] = { fg = c.keyword, bold = true, reverse = true },
 		-- section heading
-		["@markup.heading.2"] = { link = "@string" },
+		["@markup.heading.2"] = { link = "@markup.heading" },
 		-- subsection heading
-		["@markup.heading.3"] = { link = "@string" },
+		["@markup.heading.3"] = { link = "@markup.heading" },
 		-- and so on
-		["@markup.heading.4"] = { link = "@string" },
+		["@markup.heading.4"] = { link = "@markup.heading" },
 		-- and so forth
-		["@markup.heading.5"] = { link = "@string" },
+		["@markup.heading.5"] = { link = "@markup.heading" },
 		-- six levels ought to be enough for anybody
-		["@markup.heading.6"] = { link = "@string" },
+		["@markup.heading.6"] = { link = "@markup.heading" },
 
 		-- block quotes
-		["@markup.quote"] = { link = "@string" },
+		["@markup.quote"] = { fg = "fg", bg = utils.blend(c.fg, c.bg, 0.1) },
 		-- math environments (e.g. `$ ... $` in LaTeX)
-		["@markup.math"] = { link = "@string" },
+		["@markup.math"] = { link = "@variable" },
 
 		-- text references, footnotes, citations, etc.
 		["@markup.link"] = { sp = c.attr, underline = true },
@@ -195,9 +195,9 @@ local function set_groups(c)
 		["@markup.link.url"] = { link = "@markup.link" },
 
 		-- literal or verbatim text (e.g. inline code)
-		["@markup.raw"] = { fg = c.raw_text },
+		["@markup.raw"] = { fg = c.fg_2, bg = utils.blend(c.fg, c.bg, 0.2) },
 		-- literal or verbatim text as a stand-alone block; (use priority 90 for blocks with injections)
-		["@markup.raw.block"] = { link = "@variable" },
+		["@markup.raw.block"] = { fg = c.fg_2, bg = utils.blend(c.fg, c.bg, 0.1) },
 
 		-- list markers
 		["@markup.list"] = { link = "@punctuation.delimiter" },
@@ -276,13 +276,13 @@ local function set_groups(c)
 		-- generic Preprocessor
 		PreProc = { link = "@keyword.directive" },
 		-- preprocessor #include
-		Include = { link = "@keyword.import" },
+		Include = { link = "@keyword.directive" },
 		-- preprocessor #define
-		Define = { link = "@function.macro" },
+		Define = { link = "@keyword.directive.define" },
 		-- same as Define
-		Macro = { link = "@function.macro" },
+		Macro = { link = "@keyword.directive.define" },
 		-- preprocessor #if, #else, #endif, etc.
-		PreCondit = { link = "@keyword" },
+		PreCondit = { link = "@keyword.directive" },
 
 		-- int, long, char, etc.
 		Type = { link = "@type" },
@@ -304,7 +304,7 @@ local function set_groups(c)
 		-- special things inside a comment
 		SpecialComment = { link = "@comment.todo" },
 		-- debugging statements
-		Debug = { link = "@string.escape" },
+		Debug = { link = "@keyword.debug" },
 
 		-- text that stands out, HTML links
 		Underlined = { link = "@markup.underline" },
@@ -319,11 +319,11 @@ local function set_groups(c)
 		Todo = { link = "@comment.todo" },
 
 		-- added line in a diff
-		Added = {},
+		Added = { link = "@diff.plus" },
 		-- changed line in a diff
-		Changed = {},
+		Changed = { link = "@diff.delta" },
 		-- removed line in a diff
-		Removed = {},
+		Removed = { link = "@diff.minus" },
 	}
 
 	--- `:h hl-<grp name>`
@@ -334,7 +334,7 @@ local function set_groups(c)
 		-- Placeholder characters substituted for concealed text (see 'conceallevel').
 		Conceal = { fg = c.attr, bg = c.bg },
 		-- Current match for the last search pattern (see 'hlsearch'). Note: This is correct after a search, but may get outdated if changes are made or the screen is redrawn.
-		CurSearch = { link = "Search" },
+		CurSearch = {},
 		-- Character under the cursor.
 		Cursor = { reverse = true },
 		-- Character under the cursor when |language-mapping| is used (see 'guicursor').
@@ -431,7 +431,7 @@ local function set_groups(c)
 		-- Normal text in non-current windows.
 		NormalNC = {},
 		-- Popup menu: Normal item.
-		Pmenu = { fg = c.surfacefg, bg = c.surface },
+		Pmenu = { bg = c.surface },
 		-- Popup menu: Selected item. Combined with |hl-Pmenu|.
 		PmenuSel = { fg = c.bg, bg = c.menu_sel },
 		-- Popup menu: Normal item "kind".
@@ -445,7 +445,7 @@ local function set_groups(c)
 		-- Popup menu: Scrollbar.
 		PmenuSbar = { bg = c.surface },
 		-- Popup menu: Thumb of the scrollbar.
-		PmenuThumb = { bg = c.surfacefg },
+		PmenuThumb = { bg = "fg" },
 		-- Popup menu: Matched text in normal item.  Combined with |hl-Pmenu|.
 		PmenuMatch = {},
 		-- Popup menu: Matched text in selected item.  Combined with |hl-PmenuMatch| and |hl-PmenuSel|.
@@ -469,7 +469,7 @@ local function set_groups(c)
 		-- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		QuickFixLine = {},
 		-- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-		Search = { fg = c.white, bg = c.search },
+		Search = {},
 		-- Tabstops in snippets. |vim.snippet|
 		SnippetTabstop = {},
 		-- The currently active tabstop. |vim.snippet|
@@ -485,7 +485,7 @@ local function set_groups(c)
 		-- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 		SpellRare = {},
 		-- Status line of current window.
-		StatusLine = { fg = c.surfacefg, bg = c.surface },
+		StatusLine = { bg = c.surface },
 		-- Status lines of not-current windows.
 		StatusLineNC = { fg = c.surfacefg_darker, bg = c.surface_darker },
 		-- Status line of |terminal| window.
@@ -493,7 +493,7 @@ local function set_groups(c)
 		-- Status line of non-current |terminal| windows.
 		StatusLineTermNC = {},
 		-- Tab pages line, not active tab page label.
-		TabLine = { fg = c.surfacefg, bg = c.surface },
+		TabLine = { bg = c.surface },
 		-- Tab pages line, where there are no labels.
 		TabLineFill = { bg = c.bg },
 		-- Tab pages line, active tab page label.
@@ -501,7 +501,7 @@ local function set_groups(c)
 		-- Titles for output from ":set all", ":autocmd" etc.
 		Title = { fg = c.str },
 		-- Visual mode selection.
-		Visual = { fg = c.selectionfg, bg = c.selection },
+		Visual = {},
 		-- Visual mode selection when vim is "Not Owning the Selection".
 		VisualNOS = {},
 		-- "nbsp", "space", "tab", "multispace", "lead" and "trail" in 'listchars'.
@@ -644,13 +644,13 @@ local function set_groups(c)
 		-- Used for "Ok" diagnostic virtual lines.
 		DiagnosticVirtualLinesOk = {},
 		-- Used to underline "Error" diagnostics.
-		DiagnosticUnderlineError = {},
+		DiagnosticUnderlineError = { sp = c.error, underline = true },
 		-- Used to underline "Warn" diagnostics.
-		DiagnosticUnderlineWarn = {},
+		DiagnosticUnderlineWarn = { sp = c.raw_text, underline = true },
 		-- Used to underline "Info" diagnostics.
-		DiagnosticUnderlineInfo = {},
+		DiagnosticUnderlineInfo = { sp = c.search, underline = true },
 		-- Used to underline "Hint" diagnostics.
-		DiagnosticUnderlineHint = {},
+		DiagnosticUnderlineHint = { sp = c.diagnostic_hint, underline = true },
 		-- Used to underline "Ok" diagnostics.
 		DiagnosticUnderlineOk = {},
 		-- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
@@ -686,12 +686,43 @@ local function set_groups(c)
 		gitcommitSelectedFile = { link = "VCSAdd" },
 		gitcommitDiscardedFile = { link = "VCSDelete" },
 		gitcommitUnmergedFile = { link = "VCSChange" },
+
 		GitSignsAdd = { fg = c.str },
 		GitSignsChange = { fg = c.type },
 		GitSignsDelete = { fg = c.error },
+
 		TelescopeMatching = { fg = c.menu_sel },
 		TelescopePromptPrefix = { fg = c.type },
 		TelescopeSelectionCaret = { fg = c.type, bg = c.selection },
+
+		CmpItemAbbr = { link = "Normal" },
+		CmpItemAbbrDeprecated = { link = "DiagnosticDeprecated" },
+		CmpItemAbbrMatch = { link = "@keyword" },
+		CmpItemKindText = { link = "@function" },
+		CmpItemKindMethod = { link = "@lsp.type.method" },
+		CmpItemKindFunction = { link = "@lsp.type.function" },
+		CmpItemKindConstructor = { link = "@constructor" },
+		CmpItemKindField = { link = "@variable.member" },
+		CmpItemKindVariable = { link = "@lsp.type.variable" },
+		CmpItemKindClass = { link = "@lsp.type.class" },
+		CmpItemKindInterface = { link = "@lsp.type.interface" },
+		CmpItemKindModule = { link = "@module" },
+		CmpItemKindProperty = { link = "@lsp.type.property" },
+		CmpItemKindUnit = {},
+		CmpItemKindValue = {},
+		CmpItemKindEnum = { link = "@lsp.type.enum" },
+		CmpItemKindKeyword = { link = "@lsp.type.keyword" },
+		CmpItemKindSnippet = {},
+		CmpItemKindColor = {},
+		CmpItemKindFile = {},
+		CmpItemKindReference = { link = "@markup.link" },
+		CmpItemKindFolder = { link = "Directory" },
+		CmpItemKindEnumMember = { link = "@lsp.type.enumMember" },
+		CmpItemKindConstant = { link = "@constant" },
+		CmpItemKindStruct = { link = "@type" },
+		CmpItemKindEvent = { link = "lsp.type.event" },
+		CmpItemKindOperator = { link = "@lsp.type.operator" },
+		CmpItemKindTypeParameter = {},
 	}
 
 	--- @type { [string]: vim.api.keyset.highlight }
