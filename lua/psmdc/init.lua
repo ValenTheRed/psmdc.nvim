@@ -168,19 +168,22 @@ local function set_groups(c)
 		["@markup.underline"] = { underline = true },
 
 		-- headings, titles (including markers)
-		["@markup.heading"] = { fg = c.keyword, bg = utils.blend(c.keyword, c.bg, 0.1) },
+		["@markup.heading"] = { fg = c.str, bg = utils.blend(c.str, c.bg, 0.1) },
 		-- top-level heading
-		["@markup.heading.1"] = { fg = c.keyword, bold = true, reverse = true },
+		["@markup.heading.1"] = {
+			fg = c.str,
+			bg = utils.blend(c.str, c.bg, 0.25),
+		},
 		-- section heading
-		["@markup.heading.2"] = { link = "@markup.heading" },
+		["@markup.heading.2"] = {},
 		-- subsection heading
-		["@markup.heading.3"] = { link = "@markup.heading" },
+		["@markup.heading.3"] = {},
 		-- and so on
-		["@markup.heading.4"] = { link = "@markup.heading" },
+		["@markup.heading.4"] = {},
 		-- and so forth
-		["@markup.heading.5"] = { link = "@markup.heading" },
+		["@markup.heading.5"] = {},
 		-- six levels ought to be enough for anybody
-		["@markup.heading.6"] = { link = "@markup.heading" },
+		["@markup.heading.6"] = {},
 
 		-- block quotes
 		["@markup.quote"] = { fg = "fg", bg = utils.blend(c.fg, c.bg, 0.1) },
